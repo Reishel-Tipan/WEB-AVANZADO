@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #ffffff;
+    color: #111;
+    scroll-behavior: smooth;
+  }
+  
+  header {
+    position: sticky;
+    top: 0;
+    background: rgb(159, 201, 203);
+    border-bottom: 1px solid #d2d1d1;
+    z-index: 1000;
+  }
+  
+  nav {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  .marca{
+    font-size: 23px;
+    font-weight: bold;
+    color: #001a4d;
+  }
+  
+  .nav-pagina {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+  }
+  
+  .nav-pagina a {
+    text-decoration: none;
+    color: #051f54;
+    font-weight: 600;
+  }
+  
+  section.seccion {
+    padding: 55px 30px;
+    max-width: 1100px;
+    margin: auto;
+  }
+  
+  .perfil {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: center;
+    background: #f7f7f7;
+    border-radius: 0;
+  }
+  
+  .perfil .foto img {
+    max-width: 320px;
+    border-radius: 500px;
+  }
+  
+  .perfil .info h1 {
+    font-size: 32px;
+    color: #001a4d;
+  }
+  
+  .perfil .info h2 {
+    font-size: 19px;
+    color: #05427f;
+    text-align: center;
+  }
+  
+  .habilidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    
+  }
+  
+  .habilidades span {
+    background: rgb(91, 157, 160);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 15px;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+  
+  .card {
+    flex: 1 1 260px;
+    max-width: 300px;
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(125, 98, 98, 0.242);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .card a {
+    display: inline-block;
+    margin-top: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    background: rgb(255, 255, 255);
+    color: rgb(59, 94, 208);
+    padding: 10px 20px;
+    border-radius: 30px;
+  }
+
+  .card a:hover {
+    background: rgb(59, 94, 208);
+    color: white;
+  }
+  
+  
+  footer {
+    text-align: center;
+    padding: 32px;
+    background: rgb(97, 172, 176);
+    color: white;
+    font-size: 15px;
+  }
+  
+  /*Animaciones*/
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-in-out;
+  }
+  
+  .fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 768px) {
+    .perfil {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .nav-pagina {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+  
+  .contacto {
+    background: #f2f2f2;
+    padding: 64px 32px; 
+  }
+  
+  .contacto-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px; 
+    justify-content: space-between;
+  }
+  
+  .formulario {
+    padding: 17px;
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+  }
+  
+  .campo-doble {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .campo-doble input {
+    flex: 1;
+  }
+  
+  .formulario input, .formulario textarea {
+    padding: 12px; 
+    border: 1px solid #001a4d;
+    border-radius: 5px;
+    font-family: inherit;
+  }
+  
+  .formulario button {
+    background-color: rgb(31, 138, 144);
+    color: white;
+    padding: 12px; 
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .info-contacto {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+    font-size: 16px; 
+    color: #001a4d;
+  }
+  
+  .info-contacto h3 {
+    font-size: 24px;
+    color: #001a4d;
+  }
+  
+  .redes a {
+    font-size: 19px;
+    color: #001a4d;
+    margin-right: 16px; 
+  }
+  
+  .perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 50px;
+  }
+  
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .perfil .foto {
+    animation: slideInLeft 1s ease-out forwards;
+  }
+  
+  .perfil .info {
+    animation: slideInRight 1s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+  

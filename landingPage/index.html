@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil profesional</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="marca">Reishel Tipán</div>
+        <ul class="nav-pagina">
+          <li><a href="#perfil">Perfil</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#tecnologias">Tecnologías y Lenguajes</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <section id="perfil" class="seccion perfil">
+      <div class="foto">
+        <img src="images/portafolio1.jpeg" alt="Foto perfil" />
+      </div>
+      <div class="info">
+        <h1>Reishel Dayelin Tipán Ávila</h1>
+        <h2>Estudiante de Ingeniería de Software</h2>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="seccion fade-in">
+      <h2>Sobre mí</h2>
+      <br>
+      <p>
+        Estudiante de Ingeniería en Software en la Universidad de las Fuerzas Armadas ESPE, apasionada por la tecnología, el desarrollo web y la
+        creación de soluciones innovadoras. Me encuentro en constante aprendizaje y crecimiento, con experiencia en proyectos académicos que
+        integran buenas prácticas de programación y trabajo en equipo.
+      </p>
+      <p>
+        Busco oportunidades para aplicar mis conocimientos en entornos reales y seguir construyendo mi camino profesional en el mundo del desarrollo de
+        software.
+      </p>
+    </section>
+
+    <section id="tecnologias" class="seccion fade-in">
+      <h2>Tecnologías y Lenguajes</h2>
+      <br />
+      <div class="habilidades">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>C#</span>
+        <span>C++</span>
+        <span>Java</span>
+        <span>SQL</span>
+        <span>Git - GitHub</span>
+        <span>ASP.NET MVC</span>
+      </div>
+    </section>
+
+    <section id="proyectos" class="seccion fade-in">
+      <h2>Proyectos GitHub</h2>
+      <br>
+      <div class="cards">
+        <div class="card">
+          <img src="/images/proyecto1.png" alt="Proyecto 1" />
+          <h3>Campeonato Interurbanización Website</h3>
+          <p>
+            Proyecto web desarrollado con HTML y CSS para la organización de un campeonato de fútbol. Incluye secciones como calendario de partidos,
+            tabla de posiciones, goleadores, tarjetas rojas y más.
+          </p>
+          <a href="https://github.com/Reishel-Tipan/Pagina-Campeonatos/tree/main/proyecto_web" target="_blank">Ver en GitHub</a>
+        </div>
+        <div class="card">
+          <img src="/images/proyecto2.png" alt="Proyecto 2" />
+          <h3>Sistema de Alquiler de Vehículos</h3>
+          <p>
+            Sistema de alquiler de vehículos desarrollado en Visual Studio 2022 con .NET y arquitectura por capas. Permite gestionar reservas, pagos
+            y seguros, integrando base de datos SQL Server y funcionalidades administrativas para el control eficiente del servicio.
+          </p>
+          <a href="https://github.com/Reishel-Tipan/Sistema-Alquiler-Vehiculos" target="_blank">Ver en GitHub</a>
+        </div>
+        <div class="card">
+          <img src="/images/proyecto3.jpeg" alt="Proyecto 3" />
+          <h3>Gestión de Subasta de Autos</h3>
+          <p>
+            Proyecto de base de datos para un sistema de subastas de autos, desarrollado en MySQL Workbench. Se crearon tablas, relaciones,
+            consultas SQL, vistas, funciones y procedimientos almacenados, incluyendo gestión de usuarios, pujas, pagos y auditoría. Enfocado
+            en mantener la integridad de los datos.
+          </p>
+          <a href="https://github.com/Reishel-Tipan/Base-Datos/tree/main/Bonilla_Guallichico_Salcedo_Tipan" target="_blank" >Ver en GitHub</a>
+        </div>
+      </div>
+    </section>
+    <section id="contacto" class="seccion contacto">
+      <h2>Contacto</h2>
+      <div class="contacto-container">
+        <form class="formulario">
+          <div class="campo-doble">
+            <input type="text" placeholder="Nombre" />
+            <input type="text" placeholder="Apellido" />
+          </div>
+          <input type="email" placeholder="Correo *" required />
+          <textarea placeholder="Déjame un mensaje..." rows="5"></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+        <div class="info-contacto">
+          <h3>Reishel Tipán</h3>
+          <p><strong>Teléfono:</strong><br />0995763941</p>
+          <p><strong>Correo electrónico:</strong><br />reisheltipan@gmail.com</p>
+          <div class="redes">
+            <a href="https://github.com/Reishel-Tipan" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/reishel.tipan" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contacto">
+      <p>© 2025 Reishel Tipán - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="efecto.js"></script>
+
+  </body>
+</html>
