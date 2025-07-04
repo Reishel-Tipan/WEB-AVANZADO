@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+
+section.seccion {
+  padding: 55px 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  scroll-margin-top: 50px; /* Reducido para que los títulos aparezcan más arriba */
+}
+
+.perfil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 100px 5% 80px;
+  margin: 60px 0 0 0;
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 15px 15px;
+  box-sizing: border-box;
+}
+
+.perfil::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,10 L50,30 L70,10 L90,30 L70,50 L90,70 L70,90 L50,70 L30,90 L30,70 L10,50 L30,30 L10,10 Z" fill="none" stroke="rgba(38, 166, 154, 0.1)" stroke-width="1"/></svg>');
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.perfil .foto {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  max-width: 350px;
+  min-width: 280px;
+}
+
+.perfil .foto img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border: 8px solid white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil .foto img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.perfil .info {
+  flex: 2;
+  min-width: 300px;
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.perfil .info h1 {
+  font-size: 2.5rem;
+  color: var(--color-primary-darker);
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-family: 'Poppins', sans-serif;
+  background: none;
+  -webkit-text-fill-color: initial;
+  display: block;
+}
+
+section.perfil .info h2 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Eliminando la línea decorativa debajo del subtítulo */
+.perfil .info h2::after {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .contenido-pasion {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+  
+  .img-banda {
+    max-width: 70%;
+  }
+  
+  .pasion-musica {
+    padding: 20px 10px;
+  }
+  
+  .texto-pasion p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+  
+  .info-contacto {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+    font-size: 16px; 
+    color: #001a4d;
+  }
+  
+  .info-contacto h3 {
+    font-size: 24px;
+    color: #001a4d;
+  }
+  
+  .redes a {
+    font-size: 19px;
+    color: #001a4d;
+    margin-right: 16px; 
+  }
+  
+  .perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 50px;
+  }
+  
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .perfil .foto {
+    animation: slideInLeft 1s ease-out forwards;
+  }
+  
+  .perfil .info {
+    animation: slideInRight 1s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+  

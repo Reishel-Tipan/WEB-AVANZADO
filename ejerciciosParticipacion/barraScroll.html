@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: aquamarine;
+        }
+        
+    
+        .elemento {
+          opacity: 0;
+          transform: translateX(20px);
+          animation: aparecer 0.5s forwards;
+        }
+    
+        .elemento:nth-child(1) { animation-delay: 1s; }
+        .elemento:nth-child(2) { animation-delay: 2s; }
+        .elemento:nth-child(3) { animation-delay: 3s; }
+        .elemento:nth-child(4) { animation-delay: 4s; }
+    
+        @keyframes aparecer {
+          to {
+            opacity: 1;
+            transform: translatex(0);
+          }
+        }
+      </style>
+</head>
+<body>
+    <h2 class="elemento">Elemento 1</h2>
+  <h2 class="elemento">Elemento 2</h2>
+  <h2 class="elemento">Elemento 3</h2>
+  <h2 class="elemento">Elemento 4</h2>
+    
+</body>

@@ -1,0 +1,17 @@
+<header>
+  <nav>
+    <div class="marca">Reishel Tipán</div>
+    <button class="menu-toggle" [class.active]="menuActivo" (click)="toggleMenu()" aria-label="Menú">
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+    </button>
+    <ul class="nav-pagina" [class.active]="menuActivo">
+      <li><a href="#perfil" (click)="cerrarMenu()">Perfil</a></li>
+      <li><a href="#sobre-mi" (click)="cerrarMenu()">Sobre mí</a></li>
+      <li><a href="#tecnologias" (click)="cerrarMenu()">Tecnologías</a></li>
+      <li><a href="#proyectos" (click)="cerrarMenu()">Proyectos</a></li>
+      <li><a href="#contacto" (click)="cerrarMenu()">Contacto</a></li>
+    </ul>
+  </nav>
+</header>

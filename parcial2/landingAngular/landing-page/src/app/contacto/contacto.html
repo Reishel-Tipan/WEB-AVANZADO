@@ -1,0 +1,68 @@
+<section id="contacto" class="seccion contacto">
+  <h2>Contacto</h2>
+  
+  <!-- Contenedor de alertas - Actualizado para usar signals -->
+  <div id="alert-container">
+    @for (alert of alerts(); track alert.id) {
+      <div class="alert alert-{{alert.type}}">
+        <span>{{ alert.message }}</span>
+        <button type="button" class="close-alert" (click)="closeAlert(alert.id)">&times;</button>
+      </div>
+    }
+  </div>
+  
+  <div class="contacto-container">
+    <form #contactForm="ngForm" (ngSubmit)="enviarMensaje(contactForm)" class="formulario">
+      <div class="campo-doble">
+        <input 
+          type="text" 
+          id="nombre" 
+          name="nombre" 
+          [ngModel]="formData().nombre" 
+          (ngModelChange)="updateFormData({ nombre: $event })"
+          placeholder="Nombre" 
+          required />
+          
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          [ngModel]="formData().email" 
+          (ngModelChange)="updateFormData({ email: $event })"
+          placeholder="Correo electrónico" 
+          required />
+      </div>
+      
+      <input 
+        type="text" 
+        id="asunto" 
+        name="asunto" 
+        [ngModel]="formData().asunto" 
+        (ngModelChange)="updateFormData({ asunto: $event })"
+        placeholder="Asunto" 
+        required />
+        
+      <textarea 
+        id="mensaje" 
+        name="mensaje" 
+        rows="5" 
+        [ngModel]="formData().mensaje" 
+        (ngModelChange)="updateFormData({ mensaje: $event })"
+        placeholder="Mensaje" 
+        required></textarea>
+        
+      <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+    </form>
+    
+    <div class="info-contacto">
+      <h3>Reishel Tipán</h3>
+      <p><strong>Teléfono:</strong><br>0995763941</p>
+      <p><strong>Correo electrónico:</strong><br>reisheltipan&#64;gmail.com</p>
+      <div class="redes">
+        <a href="https://github.com/Reishel-Tipan" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/reishel.tipan" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+</section>

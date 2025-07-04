@@ -1,0 +1,28 @@
+<!-- Estructura principal de la aplicación -->
+<app-header></app-header>
+
+<main>
+  <section id="perfil">
+    <app-perfil></app-perfil>
+  </section>
+
+  <section id="sobre-mi">
+    <app-sobre-mi></app-sobre-mi>
+  </section>
+
+  <section id="habilidades">
+    <app-habilidades></app-habilidades>
+  </section>
+
+  <section id="proyectos">
+    <app-proyectos></app-proyectos>
+  </section>
+
+  <section id="contacto">
+    <app-contacto></app-contacto>
+  </section>
+</main>
+
+<footer>
+  <app-footer></app-footer>
+</footer>

@@ -1,0 +1,9 @@
+{
+  "path": "./angular.json",
+  "replacements": [
+    {
+      "target": "\"assets\": [\n              {\n                \"glob\": \"**/*\",\n                \"input\": \"public\"\n              }",
+      "replacement": "\"assets\": [\n              \"src/favicon.ico\",\n              \"src/assets\""
+    }
+  ]
+}
