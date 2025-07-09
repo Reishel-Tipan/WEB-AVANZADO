@@ -1,0 +1,45 @@
+.botones-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-acelerar {
+  background-color: #5bcc5f; 
+}
+
+.btn-frenar {
+  background-color: #2196F3; 
+}
+
+.btn-reiniciar {
+  background-color: #9E9E9E; 
+}
+
+/* Efecto de deshabilitado */
+.btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

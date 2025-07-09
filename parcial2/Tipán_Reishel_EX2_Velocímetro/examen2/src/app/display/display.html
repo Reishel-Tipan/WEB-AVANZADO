@@ -1,0 +1,11 @@
+<div class="display-container" [class]="claseVelocidad">
+  <div class="velocidad">{{ velocidad }}</div>
+  <div class="unidad">km/h</div>
+  <div class="indicador" [ngClass]="claseVelocidad">
+    {{ 
+      claseVelocidad === 'low-speed' ? 'VELOCIDAD BAJA' :
+      claseVelocidad === 'medium-speed' ? 'VELOCIDAD MEDIA' :
+      claseVelocidad === 'high-speed' ? 'VELOCIDAD ALTA' : 'PELIGRO! VA MUY RÁPIDO'
+    }}
+  </div>
+</div>

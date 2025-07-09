@@ -1,0 +1,11 @@
+<div class="velocimetro-container" [class]="claseVelocidad">
+  <h1>Velocímetro</h1>
+  <div class="contenido">
+    <app-display [velocidad]="velocidad" [claseVelocidad]="claseVelocidad"></app-display>
+    <app-botones 
+      (acelerar)="actualizarVelocidad(5)"
+      (frenar)="actualizarVelocidad(-3)"
+      (reiniciar)="reiniciar()">
+    </app-botones>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.velocimetro-container {
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.velocimetro-container h1 {
+  margin-top: 0;
+  color: #ffffff;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif,
+}
+
+.contenido {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Clases para los diferentes rangos de velocidad */
+.low-speed {
+  background-color: #76e27a;
+}
+
+.medium-speed {
+  background-color: #ffd557;
+}
+
+.high-speed {
+  background-color: #ffaf38;
+}
+
+.danger-speed {
+  background-color: #fc3e31;
+  animation: danger-pulse 1s infinite;
+}
+
+

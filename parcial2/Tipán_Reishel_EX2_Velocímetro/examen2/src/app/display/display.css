@@ -1,0 +1,60 @@
+.display-container {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) inset;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.velocidad {
+  font-size: 6rem;
+  font-weight: bold;
+  line-height: 1;
+  margin: 0;
+  color: #333;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.unidad {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.indicador {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: white;
+  transition: all 0.3s ease;
+  font-family: monospace;
+  font-size: 27px;
+
+}
+
+/* Colores de los indicadores */
+.low-speed {
+  background-color: #5bcc5f;
+}
+
+.medium-speed {
+  background-color: #fabf0e;
+  color: #333;
+}
+
+.high-speed {
+  background-color: #f69c15;
+}
+
+.danger-speed {
+  background-color: #ff1100;
+  animation: pulse 1.5s infinite;
+}
+
+
