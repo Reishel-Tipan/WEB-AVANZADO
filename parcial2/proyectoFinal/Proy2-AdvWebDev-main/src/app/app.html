@@ -1,0 +1,233 @@
+<nav id="navbar" class="bg-nox-dark bg-opacity-95 backdrop-blur-sm py-3 px-4 md:px-6 border-b border-nox-accent/20 sticky top-0 z-50 transition-all duration-500 ease-in-out">
+  <div class="max-w-6xl mx-auto w-full flex justify-between items-center">
+    
+    <div class="flex items-center">
+      <img src="assets/images/logo.png" alt="NOX DEV" class="h-16 w-auto">
+    </div>
+    
+    <!-- Menú de escritorio -->
+    <ul class="hidden md:flex gap-4 lg:gap-6 xl:gap-8 uppercase font-bold text-white items-center">
+      <li>
+        <a routerLink="/" 
+           routerLinkActive="text-nox-accent" 
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="hover:text-nox-bright transition-colors duration-300 px-3 py-2 block">INICIO</a>
+      </li>
+      <li>
+        <a routerLink="/servicios" 
+           routerLinkActive="text-nox-accent"
+           class="hover:text-nox-bright transition-colors duration-300 px-3 py-2 block">SERVICIOS</a>
+      </li>
+      <li>
+        <a routerLink="/empresa" 
+           routerLinkActive="text-nox-accent"
+           class="hover:text-nox-bright transition-colors duration-300 px-3 py-2 block">EMPRESA</a>
+      </li>
+      <li>
+        <a routerLink="/equipo" 
+           routerLinkActive="text-nox-accent"
+           class="hover:text-nox-bright transition-colors duration-300 px-3 py-2 block">EQUIPO</a>
+      </li>
+      <li>
+        <a routerLink="/formulario" 
+           routerLinkActive="text-nox-accent"
+           class="hover:text-nox-bright transition-colors duration-300 px-3 py-2 block">CONTACTO</a>
+      </li>
+    </ul>
+
+    <!-- Botón menú móvil -->
+    <button class="md:hidden text-white hover:text-nox-bright transition-colors duration-300" 
+            (click)="toggleMenu()" 
+            aria-label="Menú móvil">
+      <svg width="33" height="26" viewBox="0 0 33 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="33" height="3.71429" rx="1.85714" fill="currentColor"></rect>
+        <rect y="22.2857" width="33" height="3.71429" rx="1.85714" fill="currentColor"></rect>
+        <rect x="9" y="11.1429" width="24" height="3.71429" rx="1.85714" fill="currentColor"></rect>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Menú móvil -->
+  <div class="md:hidden transition-all duration-300 ease-in-out overflow-hidden" 
+       [class.max-h-0]="!isMenuOpen" 
+       [class.max-h-screen]="isMenuOpen">
+    <ul class="bg-nox-dark/95 backdrop-blur-md py-4 space-y-2">
+      <li>
+        <a routerLink="/" 
+           routerLinkActive="text-nox-accent" 
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="block py-3 px-6 text-lg text-white hover:bg-nox-accent/10">INICIO</a>
+      </li>
+      <li>
+        <a routerLink="/servicios" 
+           routerLinkActive="text-nox-accent"
+           class="block py-3 px-6 text-lg text-white hover:bg-nox-accent/10">SERVICIOS</a>
+      </li>
+      <li>
+        <a routerLink="/empresa" 
+           routerLinkActive="text-nox-accent"
+           class="block py-3 px-6 text-lg text-white hover:bg-nox-accent/10">EMPRESA</a>
+      </li>
+      <li>
+        <a routerLink="/equipo" 
+           routerLinkActive="text-nox-accent"
+           class="block py-3 px-6 text-lg text-white hover:bg-nox-accent/10">EQUIPO</a>
+      </li>
+      <li>
+        <a routerLink="/formulario" 
+           routerLinkActive="text-nox-accent"
+           class="block py-3 px-6 text-lg text-white hover:bg-nox-accent/10">CONTACTO</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Contenido dinámico -->
+<router-outlet></router-outlet>
+
+<footer class="bg-nox-dark bg-opacity-95 backdrop-blur-sm border-t border-nox-accent/20 text-nox-light relative overflow-hidden">
+  <!-- Background decorativo -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZG90cyIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxIiBmaWxsPSIjOWNiN2VkIiBvcGFjaXR5PSIwLjMiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZG90cykiLz48L3N2Zz4=')]"></div>
+  </div>
+
+  <!-- Elementos decorativos -->
+  <div class="absolute top-8 left-20 w-2 h-2 bg-nox-bright rounded-full opacity-60 animate-pulse"></div>
+  <div class="absolute top-1/2 right-32 w-1 h-1 bg-nox-light rounded-full opacity-40 animate-pulse" style="animation-delay: 2s;"></div>
+  <div class="absolute bottom-8 left-1/3 w-1.5 h-1.5 bg-nox-bright rounded-full opacity-50 animate-pulse" style="animation-delay: 4s;"></div>
+
+  <div class="container mx-auto px-6 py-8 relative z-10">
+    <!-- Header del footer -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center mb-3">
+        <img src="assets/images/logo.png" alt="NOX DEV" class="h-16 w-auto">
+      </div>
+      <p class="text-nox-light/80 max-w-md mx-auto text-base font-inter-regular">
+        Creando soluciones digitales que brillan en la oscuridad tecnológica
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-4xl mx-auto">
+      
+      <!-- Información de contacto -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center font-inter-bold">
+          <span class="w-6 h-6 bg-nox-accent rounded mr-3 flex items-center justify-center">
+            <span class="text-sm">📞</span>
+          </span>
+          CONTACTO
+        </h3>
+        <div class="bg-nox-card-light rounded-lg p-4 border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+          <h4 class="font-semibold text-white mb-2 text-base font-inter-semibold">Nox-Dev</h4>
+          <p class="text-nox-light/70 text-sm mb-2 font-inter-regular">RUC: 179312234500</p>
+          <div class="text-nox-light/70 text-sm space-y-1 font-inter-regular">
+            <p>📍 Pasaje Pillahua No. 12 y Gonzalo Pizarro</p>
+            <p>Tumbaco - 17018, Quito, Ecuador</p>
+            <p>📱 +593 9 870 67 611</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center font-inter-bold">
+          <span class="w-6 h-6 bg-nox-accent rounded mr-3 flex items-center justify-center">
+            <span class="text-sm">🌐</span>
+          </span>
+          SÍGUENOS
+        </h3>
+        
+        <div class="space-y-3">
+          <div class="grid grid-cols-3 gap-3">
+            <a href="https://facebook.com" target="_blank" class="group bg-nox-card-light rounded-lg p-3 flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300 border border-nox-light/20 hover:border-blue-500 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" 
+                   alt="Facebook" 
+                   class="w-5 h-5 filter invert group-hover:invert-0">
+            </a>
+            
+            <a href="https://instagram.com" target="_blank" class="group bg-nox-card-light rounded-lg p-3 flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 border border-nox-light/20 hover:border-pink-400 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" 
+                   alt="Instagram" 
+                   class="w-5 h-5 filter invert group-hover:invert-0">
+            </a>
+            
+            <a href="https://twitter.com" target="_blank" class="group bg-nox-card-light rounded-lg p-3 flex items-center justify-center hover:bg-gradient-to-r hover:from-sky-400 hover:to-sky-600 transition-all duration-300 border border-nox-light/20 hover:border-sky-400 hover:scale-110 hover:shadow-lg hover:shadow-sky-500/25">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" 
+                   alt="Twitter" 
+                   class="w-5 h-5 filter invert group-hover:invert-0">
+            </a>
+            
+            <a href="https://linkedin.com" target="_blank" class="group bg-nox-card-light rounded-lg p-3 flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 transition-all duration-300 border border-nox-light/20 hover:border-blue-600 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" 
+                   alt="LinkedIn" 
+                   class="w-5 h-5 filter invert group-hover:invert-0">
+            </a>
+            
+            <a href="https://github.com" target="_blank" class="group bg-nox-card-light rounded-lg p-3 flex items-center justify-center hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900 transition-all duration-300 border border-nox-light/20 hover:border-gray-600 hover:scale-110 hover:shadow-lg hover:shadow-gray-700/25">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" 
+                   alt="GitHub" 
+                   class="w-5 h-5 filter invert group-hover:invert-0">
+            </a>
+            
+            <a href="https://wa.me/593987067611" target="_blank" class="group bg-nox-card-light rounded-lg p-3 flex items-center justify-center hover:bg-gradient-to-r hover:from-green-500 hover:to-green-600 transition-all duration-300 border border-nox-light/20 hover:border-green-400 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" 
+                   alt="WhatsApp" 
+                   class="w-5 h-5 filter invert group-hover:invert-0">
+            </a>
+          </div>
+          
+          <div class="bg-nox-card-bright rounded-lg p-4 border border-nox-bright/30 text-center">
+            <p class="text-white font-semibold mb-2 text-base font-inter-semibold">¿Tienes un proyecto en mente?</p>
+            <a routerLink="/formulario" class="cosmic-button-outline inline-block px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105">
+              Hablemos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="border-t border-nox-accent/30 bg-nox-dark/50 backdrop-blur-sm">
+    <div class="container mx-auto px-6 py-4 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div class="text-nox-light/70 text-base font-inter-regular">
+          <p>&copy; 2025 Nox-Dev. Todos los derechos reservados.</p>
+        </div>
+        <div class="flex space-x-6 text-base font-inter-regular">
+          <a routerLink="/legal" (click)="$event.preventDefault(); setLegalTab('privacidad')" class="text-nox-light/70 hover:text-nox-bright transition-colors duration-300 cursor-pointer">Política de Privacidad</a>
+          <a routerLink="/legal" (click)="$event.preventDefault(); setLegalTab('terminos')" class="text-nox-light/70 hover:text-nox-bright transition-colors duration-300 cursor-pointer">Términos de Uso</a>
+          <a routerLink="/legal" (click)="$event.preventDefault(); setLegalTab('legal')" class="text-nox-light/70 hover:text-nox-bright transition-colors duration-300 cursor-pointer">Información Legal</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect - Pastilla redondeada
+  let isScrolled = false;
+  
+  function handleScroll() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > 100 && !isScrolled) {
+      navbar.classList.add('navbar-scrolled');
+      isScrolled = true;
+      console.log('Navbar convertido a pastilla'); // Debug
+    } else if (scrollTop <= 100 && isScrolled) {
+      navbar.classList.remove('navbar-scrolled');
+      isScrolled = false;
+      console.log('Navbar vuelto a normal'); // Debug
+    }
+  }
+  
+  // Esperar a que Angular se inicialice
+  setTimeout(function() {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Estado inicial
+  }, 100);
+</script>

@@ -1,0 +1,255 @@
+<section class="text-nox-light py-16 relative overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10">
+    
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+      <span class="w-60 h-2.5 bg-nox-bright mb-8 mx-auto block rounded-full shadow-lg shadow-nox-bright/50"></span>
+      <h1 class="font-bebas-neue uppercase text-5xl sm:text-7xl font-black text-nox-title mb-6 stellar-glow tracking-[0.12em]">
+        Servicios NoxDev
+      </h1>
+      <p class="text-xl text-white max-w-3xl mx-auto">
+        Soluciones tecnológicas que emergen desde la oscuridad digital para impulsar tu negocio hacia las estrellas
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <div 
+        *ngFor="let servicio of servicios" 
+        class="service-card service-card-custom rounded-lg p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+        (click)="seleccionarServicio(servicio)"
+        [class.selected]="servicioSeleccionado?.id === servicio.id">
+        
+        <!-- Card Header -->
+        <div class="text-center mb-6">
+          <div class="text-4xl mb-4 text-nox-accent">
+            <fa-icon [icon]="servicio.icono"></fa-icon>
+          </div>
+          <h3 class="text-xl font-bold text-nox-title mb-3">{{ servicio.titulo }}</h3>
+          <p class="text-white text-sm leading-relaxed">{{ servicio.descripcion }}</p>
+        </div>
+
+        <!-- Price and Duration -->
+        <div class="flex justify-between items-center mb-4 text-sm">
+          <span class="bg-nox-accent text-nox-dark px-3 py-1 rounded-full font-semibold">
+            {{ servicio.precio }}
+          </span>
+          <span class="text-white flex items-center">
+            <fa-icon [icon]="faClock" class="mr-1"></fa-icon>
+            {{ servicio.duracion }}
+          </span>
+        </div>
+
+        <!-- Technologies Preview -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span 
+            *ngFor="let tech of servicio.tecnologias.slice(0, 3)" 
+            class="bg-nox-medium/50 text-xs px-2 py-1 rounded text-white">
+            {{ tech }}
+          </span>
+          <span 
+            *ngIf="servicio.tecnologias.length > 3" 
+            class="bg-nox-medium/30 text-xs px-2 py-1 rounded text-white/70">
+            +{{ servicio.tecnologias.length - 3 }}
+          </span>
+        </div>
+
+        <!-- Action Button -->
+        <div class="text-center">
+          <button class="cosmic-button-outline w-full py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-300">
+            {{ servicioSeleccionado?.id === servicio.id ? 'Ocultar Detalles' : 'Ver Detalles' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Service View - Modal Overlay -->
+    <div *ngIf="servicioSeleccionado" class="service-details-overlay" (click)="cerrarModal($event)">
+      <div class="service-details animate-fade-in" (click)="$event.stopPropagation()">
+        <div class="modal-content">
+          <!-- Left Column -->
+          <div class="modal-left">
+            <div class="modal-header">
+              <span class="modal-icon">
+                <fa-icon [icon]="servicioSeleccionado.icono"></fa-icon>
+              </span>
+              <div>
+                <h2>{{ servicioSeleccionado.titulo }}</h2>
+                <p>{{ servicioSeleccionado.descripcion }}</p>
+              </div>
+            </div>
+
+            <!-- Características -->
+            <div class="modal-section">
+              <h3>
+                <fa-icon [icon]="faRocket"></fa-icon>
+                Características Principales
+              </h3>
+              <ul>
+                <li *ngFor="let caracteristica of servicioSeleccionado.caracteristicas">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                  {{ caracteristica }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="modal-right">
+            <!-- Tecnologías -->
+            <div class="modal-section">
+              <h3>
+                <fa-icon [icon]="faCogs"></fa-icon>
+                Tecnologías Utilizadas
+              </h3>
+              <div class="tech-tags">
+                <span *ngFor="let tech of servicioSeleccionado.tecnologias">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Información del Proyecto -->
+            <div class="project-info">
+              <h3>
+                <fa-icon [icon]="faClipboardList"></fa-icon>
+                Información del Proyecto
+              </h3>
+              <div class="info-grid">
+                <div class="info-item">
+                  <span>Precio inicial:</span>
+                  <span class="highlight">{{ servicioSeleccionado.precio }}</span>
+                </div>
+                <div class="info-item">
+                  <span>Duración estimada:</span>
+                  <span>{{ servicioSeleccionado.duracion }}</span>
+                </div>
+                <div class="info-item">
+                  <span>Soporte incluido:</span>
+                  <span class="highlight">3 meses</span>
+                </div>
+              </div>
+              
+              <!-- CTA Button -->
+              <button class="cta-button" (click)="$event.stopPropagation(); navegarAFormulario()">
+                Solicitar Cotización
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Close Button -->
+        <div class="modal-footer">
+          <button (click)="servicioSeleccionado = null" class="close-button">
+            <fa-icon [icon]="faTimes"></fa-icon>
+            Cerrar Detalles
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="text-center mt-16 service-card-custom rounded-lg p-8">
+      <h2 class="text-3xl font-bold text-nox-title mb-4">¿No encuentras lo que buscas?</h2>
+      <p class="text-white mb-6 max-w-2xl mx-auto">
+        Creamos soluciones personalizadas adaptadas a las necesidades específicas de tu negocio. 
+        Contáctanos para discutir tu proyecto único en la galaxia digital.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a routerLink="/formulario" class="cosmic-button py-3 px-8 rounded-lg font-bold transition-all duration-300 hover:transform hover:scale-105 inline-block">
+          Contactar Ahora
+        </a>
+        <a routerLink="/portfolio" class="cosmic-button-outline py-3 px-8 rounded-lg font-semibold transition-all duration-300 inline-block text-center">
+          Ver Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cosmic Background Elements -->
+  <div class="cosmic-bg-element" style="top: 25%; left: 8rem;"></div>
+  <div class="cosmic-bg-element" style="top: 50%; right: 6rem; width: 0.25rem; height: 0.25rem; animation-delay: 1s;"></div>
+  <div class="cosmic-bg-element" style="bottom: 33.33%; left: 25%; width: 0.375rem; height: 0.375rem; animation-delay: 2s;"></div>
+  <div class="cosmic-bg-element" style="top: 75%; right: 33.33%; width: 0.25rem; height: 0.25rem; animation-delay: 3s;"></div>
+</section>
+
+<!-- Modal fuera del flujo normal del documento -->
+<ng-container *ngIf="servicioSeleccionado">
+  <div class="service-details-overlay" (click)="cerrarModal($event)">
+    <div class="service-details animate-fade-in" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <!-- Contenido del modal -->
+        <div class="modal-left">
+          <div class="modal-header">
+            <span class="modal-icon">
+              <fa-icon [icon]="servicioSeleccionado.icono"></fa-icon>
+            </span>
+            <div>
+              <h2>{{ servicioSeleccionado.titulo }}</h2>
+              <p>{{ servicioSeleccionado.descripcion }}</p>
+            </div>
+          </div>
+
+          <div class="modal-section">
+            <h3>
+              <fa-icon [icon]="faRocket"></fa-icon>
+              Características Principales
+            </h3>
+            <ul>
+              <li *ngFor="let caracteristica of servicioSeleccionado.caracteristicas">
+                <fa-icon [icon]="faCheck"></fa-icon>
+                {{ caracteristica }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="modal-right">
+          <div class="modal-section">
+            <h3>
+              <fa-icon [icon]="faCogs"></fa-icon>
+              Tecnologías Utilizadas
+            </h3>
+            <div class="tech-tags">
+              <span *ngFor="let tech of servicioSeleccionado.tecnologias">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <h3>
+              <fa-icon [icon]="faClipboardList"></fa-icon>
+              Información del Proyecto
+            </h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <span>Precio inicial:</span>
+                <span class="highlight">{{ servicioSeleccionado.precio }}</span>
+              </div>
+              <div class="info-item">
+                <span>Duración estimada:</span>
+                <span>{{ servicioSeleccionado.duracion }}</span>
+              </div>
+              <div class="info-item">
+                <span>Soporte incluido:</span>
+                <span class="highlight">3 meses</span>
+              </div>
+            </div>
+            
+            <button class="cta-button">
+              Solicitar Cotización
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button (click)="servicioSeleccionado = null" class="close-button">
+          <fa-icon [icon]="faTimes"></fa-icon>
+          Cerrar Detalles
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

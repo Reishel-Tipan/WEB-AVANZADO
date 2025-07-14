@@ -1,0 +1,441 @@
+<section class="cosmic-void text-nox-light py-16 relative overflow-hidden min-h-screen">
+  <div class="container mx-auto px-6 relative z-10">
+    
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+      <span class="w-60 h-2.5 bg-nox-bright mb-8 mx-auto block rounded-full shadow-lg shadow-nox-bright/50"></span>
+      <h1 class="font-bebas-neue uppercase text-5xl sm:text-7xl font-black text-nox-title mb-6 stellar-glow tracking-[0.15em]">
+        Portfolio NoxDev
+      </h1>
+      <p class="text-xl text-white max-w-3xl mx-auto mb-8">
+        Proyectos que emergen desde la oscuridad digital para transformar ideas en realidades estelares
+      </p>
+      
+      <!-- Estadísticas -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div class="bg-nox-card-light rounded-lg p-4 border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+          <div class="text-2xl font-bold text-nox-accent">{{ proyectos.length }}+</div>
+          <div class="text-sm text-white/70">Proyectos Completados</div>
+        </div>
+        <div class="bg-nox-card-light rounded-lg p-4 border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+          <div class="text-2xl font-bold text-nox-accent">150K+</div>
+          <div class="text-sm text-white/70">Usuarios Impactados</div>
+        </div>
+        <div class="bg-nox-card-light rounded-lg p-4 border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+          <div class="text-2xl font-bold text-nox-accent">98%</div>
+          <div class="text-sm text-white/70">Satisfacción Cliente</div>
+        </div>
+        <div class="bg-nox-card-light rounded-lg p-4 border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+          <div class="text-2xl font-bold text-nox-accent">24/7</div>
+          <div class="text-sm text-white/70">Soporte Técnico</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyectos Destacados - Hero Gallery -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-nox-title mb-12 text-center tracking-[0.12em]">
+        <fa-icon [icon]="faRocket" class="mr-3 text-nox-accent"></fa-icon>
+        Proyectos Destacados
+      </h2>
+      
+      <!-- Hero Project (First Destacado) -->
+      <div class="mb-12" *ngIf="proyectosDestacados.length > 0">
+        <div class="portfolio-hero-card group cursor-pointer relative overflow-hidden rounded-2xl min-h-[500px] lg:min-h-[600px]"
+             [style.background-image]="'url(' + proyectosDestacados[0].imagen + ')'"
+             (click)="seleccionarProyecto(proyectosDestacados[0])">
+          
+          <!-- Overlay gradiente -->
+          <div class="absolute inset-0 bg-gradient-to-r from-nox-dark/95 via-nox-dark/50 to-transparent"></div>
+          
+          <!-- Contenido del hero -->
+          <div class="absolute inset-0 flex items-center">
+            <div class="max-w-4xl p-8 lg:p-16">
+              <!-- Badge destacado -->
+              <div class="flex flex-wrap items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full text-sm font-bold flex items-center">
+                  <fa-icon [icon]="faStar" class="mr-2"></fa-icon>
+                  PROYECTO DESTACADO
+                </span>
+                <span class="portfolio-category-badge {{ proyectosDestacados[0].categoria }} text-white px-4 py-1.5 rounded-full text-xs font-bold flex items-center">
+                  <fa-icon [icon]="getCategoriaIcon(proyectosDestacados[0].categoria)" class="mr-1.5 text-xs"></fa-icon>
+                  {{ getCategoriaNombre(proyectosDestacados[0].categoria) }}
+                </span>
+              </div>
+              
+              <h3 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">{{ proyectosDestacados[0].titulo }}</h3>
+              <p class="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl">{{ proyectosDestacados[0].descripcionCompleta }}</p>
+              
+              <!-- Métricas rápidas -->
+              <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12 mb-8">
+                <div class="text-center lg:text-left" *ngIf="proyectosDestacados[0].usuarios">
+                  <div class="text-3xl lg:text-4xl font-bold text-nox-accent mb-1">{{ proyectosDestacados[0].usuarios }}</div>
+                  <div class="text-sm lg:text-base text-white/70">Usuarios Activos</div>
+                </div>
+                <div class="text-center lg:text-left">
+                  <div class="text-3xl lg:text-4xl font-bold text-nox-accent mb-1">{{ proyectosDestacados[0].puntuacion }}</div>
+                  <div class="text-sm lg:text-base text-white/70">Rating ⭐</div>
+                </div>
+                <div class="text-center lg:text-left col-span-2 lg:col-span-1">
+                  <div class="text-3xl lg:text-4xl font-bold text-nox-accent mb-1">{{ proyectosDestacados[0].duracionDesarrollo }}</div>
+                  <div class="text-sm lg:text-base text-white/70">Tiempo de Desarrollo</div>
+                </div>
+              </div>
+              
+              <!-- Stack principal -->
+              <div class="flex flex-wrap gap-3 mb-8" *ngIf="proyectosDestacados[0].tecnologias && proyectosDestacados[0].tecnologias.length > 0">
+                <span 
+                  *ngFor="let tech of proyectosDestacados[0].tecnologias.slice(0, 5)" 
+                  class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-4 py-2 rounded-xl text-sm lg:text-base font-medium">
+                  {{ tech }}
+                </span>
+                <span 
+                  *ngIf="proyectosDestacados[0].tecnologias.length > 5"
+                  class="bg-white/5 backdrop-blur-sm border border-white/20 text-white/70 px-4 py-2 rounded-xl text-sm lg:text-base">
+                  +{{ proyectosDestacados[0].tecnologias.length - 5 }} más
+                </span>
+              </div>
+              
+              <button class="portfolio-hero-btn group inline-flex items-center text-lg">
+                Ver Detalles Completos
+                <fa-icon [icon]="faArrowRight" class="ml-3 transform group-hover:translate-x-2 transition-transform duration-300"></fa-icon>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Indicador de hover -->
+          <div class="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center">
+              <fa-icon [icon]="faEye" class="text-white text-xl"></fa-icon>
+            </div>
+          </div>
+          
+          <!-- Estado del proyecto -->
+          <div class="absolute bottom-6 right-6">
+            <span class="portfolio-status-badge {{ getEstadoColor(proyectosDestacados[0].estado) }} text-white px-4 py-1.5 rounded-full text-xs font-bold">
+              {{ getEstadoTexto(proyectosDestacados[0].estado) }}
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Galería de otros proyectos destacados -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" *ngIf="proyectosDestacados.length > 1">
+        <div 
+          *ngFor="let proyecto of proyectosDestacados.slice(1)" 
+          class="portfolio-featured-card group cursor-pointer relative overflow-hidden rounded-xl h-64"
+          [style.background-image]="'url(' + proyecto.imagen + ')'"
+          (click)="seleccionarProyecto(proyecto)">
+          
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-nox-dark/90 via-nox-dark/40 to-transparent"></div>
+          
+          <!-- Contenido -->
+          <div class="absolute inset-0 p-6 flex flex-col justify-between">
+            <!-- Header -->
+            <div class="flex justify-between items-start">
+              <span class="portfolio-category-badge {{ proyecto.categoria }} text-white px-3 py-1 rounded-full text-xs font-bold flex items-center">
+                <fa-icon [icon]="getCategoriaIcon(proyecto.categoria)" class="mr-1.5 text-xs"></fa-icon>
+                {{ getCategoriaNombre(proyecto.categoria) }}
+              </span>
+              <div class="flex items-center bg-black/30 backdrop-blur-sm rounded-full px-2 py-1">
+                <fa-icon [icon]="faStar" class="text-yellow-400 text-xs mr-1"></fa-icon>
+                <span class="text-white text-xs">{{ proyecto.puntuacion }}</span>
+              </div>
+            </div>
+            
+            <!-- Footer -->
+            <div>
+              <h4 class="text-xl font-bold text-white mb-2">{{ proyecto.titulo }}</h4>
+              <p class="text-white/70 text-sm mb-3 line-clamp-2">{{ proyecto.descripcion }}</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-nox-accent font-semibold text-sm">{{ proyecto.usuarios }}</span>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white text-sm">Ver proyecto →</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtros de Categorías -->
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold text-nox-title mb-8 text-center tracking-[0.12em]">
+        <fa-icon [icon]="faLaptopCode" class="mr-3 text-nox-accent"></fa-icon>
+        Todos los Proyectos
+      </h2>
+      
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button 
+          *ngFor="let categoria of categorias"
+          (click)="filtrarPorCategoria(categoria.id)"
+          [class]="categoriaActiva === categoria.id ? 
+            'cosmic-button py-2 px-6 rounded-lg font-semibold transition-all duration-300' : 
+            'cosmic-button-outline py-2 px-6 rounded-lg font-semibold transition-all duration-300'">
+          <fa-icon [icon]="categoria.icono" class="mr-2"></fa-icon>
+          {{ categoria.nombre }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid de Todos los Proyectos - Masonry Style -->
+    <div class="portfolio-masonry mb-16">
+      <div 
+        *ngFor="let proyecto of proyectosFiltrados; let i = index" 
+        class="portfolio-masonry-item group cursor-pointer"
+        [class.tall]="i % 5 === 0"
+        [class.wide]="i % 7 === 0"
+        (click)="seleccionarProyecto(proyecto)"
+        [class.selected]="proyectoSeleccionado?.id === proyecto.id">
+        
+        <!-- Imagen de fondo -->
+        <div class="portfolio-masonry-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+             [style.background-image]="'url(' + proyecto.imagen + ')'">
+        </div>
+        
+        <!-- Overlay principal con gradiente mejorado -->
+        <div class="portfolio-masonry-overlay-main"></div>
+        
+        <!-- Overlay de color temático -->
+        <div class="portfolio-masonry-overlay-colored"
+             [class.bg-blue-500]="proyecto.categoria === 'web'"
+             [class.bg-purple-500]="proyecto.categoria === 'mobile'"
+             [class.bg-green-500]="proyecto.categoria === 'ecommerce'"
+             [class.bg-yellow-500]="proyecto.categoria === 'educativo'"
+             [class.bg-red-500]="proyecto.categoria === 'salud'"
+             [class.bg-indigo-500]="proyecto.categoria === 'gaming'">
+        </div>
+        
+        <!-- Contenido organizado -->
+        <div class="portfolio-masonry-content">
+          
+          <!-- Header superior -->
+          <div class="portfolio-masonry-header">
+            <!-- Categoría -->
+            <div class="portfolio-category-badge"
+                 [class.web]="proyecto.categoria === 'web'"
+                 [class.mobile]="proyecto.categoria === 'mobile'"
+                 [class.ecommerce]="proyecto.categoria === 'ecommerce'"
+                 [class.educativo]="proyecto.categoria === 'educativo'"
+                 [class.salud]="proyecto.categoria === 'salud'"
+                 [class.gaming]="proyecto.categoria === 'gaming'">
+              <fa-icon [icon]="getCategoriaIcon(proyecto.categoria)" class="mr-2"></fa-icon>
+              {{ getCategoriaNombre(proyecto.categoria) }}
+            </div>
+            
+            <!-- Estado -->
+            <div class="portfolio-status-badge" [class]="getEstadoColor(proyecto.estado).replace('text-', 'bg-').replace('-400', '-500')">
+              {{ getEstadoTexto(proyecto.estado) }}
+            </div>
+          </div>
+          
+          <!-- Contenido central (aparece en hover) -->
+          <div class="portfolio-masonry-body">
+            <!-- Puntuación - siempre visible, estilo diferente para destacados -->
+            <div class="portfolio-masonry-featured" 
+                 [class.bg-yellow-featured]="proyecto.destacado"
+                 [class.border-yellow-featured]="proyecto.destacado"
+                 [class.bg-white-featured]="!proyecto.destacado"
+                 [class.border-white-featured]="!proyecto.destacado">
+              <fa-icon [icon]="faStar" 
+                       [class.text-yellow-400]="proyecto.destacado"
+                       [class.text-white-muted]="!proyecto.destacado"></fa-icon>
+              <span class="portfolio-masonry-featured-text"
+                    [class.text-yellow-300]="proyecto.destacado"
+                    [class.text-white-light]="!proyecto.destacado">{{ proyecto.puntuacion }}/5</span>
+            </div>
+            
+            <!-- Tech stack preview -->
+            <div class="portfolio-masonry-tech">
+              <span 
+                *ngFor="let tech of proyecto.tecnologias.slice(0, 3)" 
+                class="portfolio-masonry-tech-badge">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+          
+          <!-- Footer inferior -->
+          <div class="portfolio-masonry-footer">
+            <h3 class="portfolio-masonry-title group-hover:text-nox-accent transition-colors duration-300">
+              {{ proyecto.titulo }}
+            </h3>
+            <p class="portfolio-masonry-description">{{ proyecto.descripcion }}</p>
+            
+            <!-- Métricas -->
+            <div class="portfolio-masonry-metrics">
+              <span class="portfolio-masonry-users">{{ proyecto.usuarios }}</span>
+              <span class="portfolio-masonry-date">{{ proyecto.fechaLanzamiento }}</span>
+            </div>
+            
+            <!-- Action button - siempre visible -->
+            <div class="portfolio-masonry-action">
+              <fa-icon [icon]="faEye" class="mr-2"></fa-icon>
+              Ver Detalles
+            </div>
+          </div>
+        </div>
+        
+        <!-- Efecto de brillo en hover -->
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 delay-200"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center bg-nox-card-light rounded-lg p-8 border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+      <h2 class="text-3xl font-bold text-nox-title mb-4 tracking-[0.12em]">¿Listo para tu próximo proyecto estelar?</h2>
+      <p class="text-white mb-6 max-w-2xl mx-auto">
+        Cada proyecto en nuestro portfolio representa una historia de innovación y éxito. 
+        Tu proyecto podría ser el próximo en brillar en nuestra galaxia digital.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="cosmic-button py-3 px-8 rounded-lg font-bold transition-all duration-300 hover:transform hover:scale-105">
+          <fa-icon [icon]="faRocket" class="mr-2"></fa-icon>
+          Iniciar Mi Proyecto
+        </button>
+        <button class="cosmic-button-outline py-3 px-8 rounded-lg font-semibold transition-all duration-300">
+          <fa-icon [icon]="faUsers" class="mr-2"></fa-icon>
+          Hablar con el Equipo
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Elementos Decorativos Cósmicos -->
+  <div class="absolute top-1/4 left-16 w-2 h-2 bg-nox-bright rounded-full opacity-80 animate-ping"></div>
+  <div class="absolute top-1/2 right-20 w-1 h-1 bg-nox-light rounded-full opacity-60 animate-pulse" style="animation-delay: 1s;"></div>
+  <div class="absolute bottom-1/3 left-1/4 w-1 h-1 bg-nox-accent rounded-full opacity-70 animate-pulse" style="animation-delay: 0.5s;"></div>
+  <div class="absolute top-3/4 right-1/3 w-1 h-1 bg-nox-light rounded-full opacity-50 animate-pulse" style="animation-delay: 3s;"></div>
+  <div class="absolute top-1/6 right-1/4 w-1 h-1 bg-nox-accent rounded-full opacity-60 animate-ping" style="animation-delay: 4s;"></div>
+</section>
+
+<!-- Modal de Detalles del Proyecto (Fuera del flujo normal) -->
+<ng-container *ngIf="proyectoSeleccionado">
+  <div class="portfolio-details-overlay" [class.active]="proyectoSeleccionado" (click)="cerrarDetalles($event)">
+    <div class="portfolio-details-content" (click)="$event.stopPropagation()">
+      <!-- Botón de cierre superior derecho -->
+      <button (click)="cerrarDetalles($event)" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors">
+        <fa-icon [icon]="faTimes" class="text-2xl"></fa-icon>
+      </button>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Columna Izquierda - Imagen del Proyecto -->
+        <div class="lg:col-span-7">
+          <div class="bg-nox-card-light/30 border border-nox-light/10 rounded-xl overflow-hidden">
+            <img [src]="proyectoSeleccionado.imagen" [alt]="proyectoSeleccionado.titulo" class="w-full h-auto">
+          </div>
+          
+          <!-- Descripción -->
+          <div class="mt-8">
+            <h3 class="text-xl font-bold text-white mb-4">Descripción</h3>
+            <p class="text-white/80 leading-relaxed">{{ proyectoSeleccionado.descripcionCompleta }}</p>
+          </div>
+          
+          <!-- Características principales -->
+          <div class="mt-8" *ngIf="proyectoSeleccionado.caracteristicas?.length">
+            <h3 class="text-xl font-bold text-white mb-4">Características Principales</h3>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <li *ngFor="let item of proyectoSeleccionado.caracteristicas" class="flex items-start">
+                <fa-icon [icon]="faCheckCircle" class="text-nox-accent mt-1 mr-2 text-sm"></fa-icon>
+                <span class="text-white/80">{{item}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Columna Derecha - Información Técnica -->
+        <div class="lg:col-span-5">
+          <div class="sticky top-6 space-y-8">
+            <!-- Título y Categoría -->
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h2 class="text-3xl font-bold text-white">{{ proyectoSeleccionado.titulo }}</h2>
+                <span class="bg-nox-accent/20 text-nox-accent px-3 py-1 rounded-full text-xs font-medium">
+                  {{ proyectoSeleccionado.categoria }}
+                </span>
+              </div>
+              <p class="text-white/70">{{ proyectoSeleccionado.subtitulo || 'Solución digital personalizada' }}</p>
+            </div>
+            
+            <!-- Detalles Técnicos -->
+            <div class="bg-nox-card-light/30 border border-nox-light/10 rounded-xl p-6">
+              <h3 class="text-lg font-semibold text-white mb-4">Detalles del Proyecto</h3>
+              
+              <div class="space-y-4">
+                <!-- Cliente -->
+                <div *ngIf="proyectoSeleccionado.cliente" class="flex justify-between py-2 border-b border-nox-light/10">
+                  <span class="text-white/60">Cliente</span>
+                  <span class="text-white font-medium">{{ proyectoSeleccionado.cliente }}</span>
+                </div>
+                
+                <!-- Rol -->
+                <div *ngIf="proyectoSeleccionado.rol" class="flex justify-between py-2 border-b border-nox-light/10">
+                  <span class="text-white/60">Rol</span>
+                  <span class="text-white">{{ proyectoSeleccionado.rol }}</span>
+                </div>
+                
+                <!-- Fecha -->
+                <div *ngIf="proyectoSeleccionado.fecha" class="flex justify-between py-2 border-b border-nox-light/10">
+                  <span class="text-white/60">Fecha</span>
+                  <span class="text-white">{{ proyectoSeleccionado.fecha | date:'MMMM yyyy' }}</span>
+                </div>
+                
+                <!-- Estado -->
+                <div *ngIf="proyectoSeleccionado.estado" class="flex justify-between items-center py-2">
+                  <span class="text-white/60">Estado</span>
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium" 
+                        [ngClass]="{
+                          'bg-green-500/20 text-green-400': proyectoSeleccionado.estado === 'Completado',
+                          'bg-blue-500/20 text-blue-400': proyectoSeleccionado.estado === 'En Progreso',
+                          'bg-yellow-500/20 text-yellow-400': proyectoSeleccionado.estado === 'En Pausa',
+                          'bg-purple-500/20 text-purple-400': !['Completado', 'En Progreso', 'En Pausa'].includes(proyectoSeleccionado.estado)
+                        }">
+                    {{ proyectoSeleccionado.estado }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tecnologías -->
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-4">Tecnologías Utilizadas</h3>
+              <div class="flex flex-wrap gap-2">
+                <span 
+                  *ngFor="let tech of proyectoSeleccionado.tecnologias" 
+                  class="bg-nox-card-light/50 text-white/90 px-3 py-1.5 rounded-full text-xs border border-nox-light/20 hover:bg-nox-accent/20 hover:border-nox-accent/50 transition-colors">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+            
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <a 
+                *ngIf="proyectoSeleccionado.enlaceDemo" 
+                [href]="proyectoSeleccionado.enlaceDemo" 
+                target="_blank"
+                class="cosmic-button flex-1 text-center">
+                <fa-icon [icon]="faExternalLinkAlt" class="mr-2"></fa-icon>
+                Ver Demo
+              </a>
+              <a 
+                *ngIf="proyectoSeleccionado.enlaceRepositorio" 
+                [href]="proyectoSeleccionado.enlaceRepositorio" 
+                target="_blank"
+                class="cosmic-button-outline flex-1 text-center">
+                <fa-icon [icon]="faCode" class="mr-2"></fa-icon>
+                Ver Código
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

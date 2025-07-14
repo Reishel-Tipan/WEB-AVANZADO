@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+/* NoxDev Night Theme - Paleta de Colores */
+:root {
+  --nox-dark: #151a38;
+  --nox-deep: #1a2043;
+  --nox-primary: #252f56;
+  --nox-medium: #394a75;
+  --nox-bright: #9cb7ed;
+  --nox-light: #9cb7ed;
+  --nox-accent: #5873b3;
+  --nox-title: #ffffff;  /* Color fuerte para títulos - mismo que nox-dark */
+}
+
+/* Reset y configuración base con Inter */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--nox-dark);
+  background-image: url('./assets/images/fondoEstrellado.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Texto general blanco con serif elegante */
+p, span, div, li, a {
+  color: white;
+  font-family: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+}
+
+/* Títulos con fuente serif más elegante */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  font-weight: 600;
+  color: white;
+}
+
+/* Fondo de noche estrellada global - Sin fondo propio para mostrar imagen de fondo */
+.night-sky {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Clase para eliminar fondos de secciones y mostrar imagen de fondo global */
+.transparent-section {
+  background: transparent !important;
+}
+
+/* Asegurar que todas las secciones sean transparentes */
+section {
+  background: transparent;
+}
+
+.night-sky::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, white, transparent),
+    radial-gradient(2px 2px at 40px 70px, white, transparent),
+    radial-gradient(1px 1px at 90px 40px, white, transparent),
+    radial-gradient(1px 1px at 130px 80px, white, transparent),
+    radial-gradient(2px 2px at 160px 30px, white, transparent),
+    radial-gradient(1px 1px at 200px 90px, white, transparent),
+    radial-gradient(1px 1px at 240px 20px, white, transparent),
+    radial-gradient(2px 2px at 280px 60px, white, transparent),
+    radial-gradient(1px 1px at 320px 100px, white, transparent),
+    radial-gradient(1px 1px at 360px 40px, white, transparent);
+  background-repeat: repeat;
+  background-size: 400px 120px;
+  animation: sparkle 50s linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.night-sky::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(88, 115, 179, 0.3) 0%, transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(156, 183, 237, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 40% 40%, rgba(57, 74, 117, 0.4) 0%, transparent 20%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes sparkle {
+  from { transform: translateX(0); }
+  to { transform: translateX(-400px); }
+}
+
+/* Efectos de luna */
+.moon-glow {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, var(--nox-accent) 0%, var(--nox-light) 30%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: moonPulse 8s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes moonPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* Clases utilitarias para la nueva paleta */
+.bg-nox-dark { background-color: var(--nox-dark); }
+.bg-nox-deep { background-color: var(--nox-deep); }
+.bg-nox-primary { background-color: var(--nox-primary); }
+.bg-nox-medium { background-color: var(--nox-medium); }
+.bg-nox-bright { background-color: var(--nox-bright); }
+.bg-nox-light { background-color: var(--nox-light); }
+.bg-nox-accent { background-color: var(--nox-accent); }
+
+/* Fondos más claros para cards */
+.bg-nox-card-light { background-color: rgba(57, 74, 117, 0.7); } /* nox-medium con mayor opacidad */
+.bg-nox-card-bright { background-color: rgba(88, 115, 179, 0.3); } /* nox-bright con opacidad */
+
+/* Colores para títulos y elementos especiales - usar solo para acentos, no texto general */
+.text-nox-dark { color: var(--nox-dark); }
+.text-nox-deep { color: var(--nox-deep); }
+.text-nox-primary { color: var(--nox-primary); }
+.text-nox-medium { color: var(--nox-medium); }
+.text-nox-bright { color: var(--nox-bright); }
+.text-nox-light { color: var(--nox-light); }
+.text-nox-accent { color: var(--nox-accent); }
+.text-nox-title { color: var(--nox-title); } /* Color fuerte para títulos */
+
+/* Texto blanco por defecto para todo el contenido */
+.text-white { color: white !important; }
+
+.border-nox-bright { border-color: var(--nox-bright); }
+.border-nox-light { color: var(--nox-light); }
+
+/* Navbar scroll effect */
+#navbar {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#navbar.navbar-scrolled {
+  margin: 0.5rem 2rem !important;
+  border-radius: 2rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 16px rgba(0, 0, 0, 0.2) !important;
+  border-bottom: none !important;
+  padding: 0.75rem 1.5rem !important;
+  background: rgba(21, 26, 56, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* Inter Font Classes - para mejor legibilidad */
+.font-inter-light { font-family: 'Inter', sans-serif; font-weight: 300; }
+.font-inter-regular { font-family: 'Inter', sans-serif; font-weight: 400; }
+.font-inter-medium { font-family: 'Inter', sans-serif; font-weight: 500; }
+.font-inter-semibold { font-family: 'Inter', sans-serif; font-weight: 600; }
+.font-inter-bold { font-family: 'Inter', sans-serif; font-weight: 700; }
+.font-inter-extrabold { font-family: 'Inter', sans-serif; font-weight: 800; }
+
+/* Tipografía optimizada para legibilidad */
+p, span, div, li, a {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em; /* Mejora la legibilidad de Inter */
+}
+
+/* Mantener Bebas Neue para títulos principales */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bebas Neue', 'Inter', sans-serif;
+}
+
+/* Texto de cuerpo con Inter optimizado */
+.text-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+.text-body-medium {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* Mejoras de interletrado (letter-spacing) para títulos */
+.font-bebas-neue {
+  letter-spacing: 0.1em;
+}
+
+/* Clases personalizadas de interletrado */
+.tracking-extra-wide {
+  letter-spacing: 0.2em;
+}
+
+.tracking-super-wide {
+  letter-spacing: 0.25em;
+}
+
+/* Mejoras específicas para títulos grandes */
+h1.font-bebas-neue {
+  letter-spacing: 0.15em;
+}
+
+h2.font-bebas-neue {
+  letter-spacing: 0.12em;
+}
+
+h3.font-bebas-neue {
+  letter-spacing: 0.1em;
+}
+
+/* Ajustes para texto en mayúsculas */
+.uppercase {
+  letter-spacing: 0.05em;
+}
+
+.uppercase.font-bold,
+.uppercase.font-black {
+  letter-spacing: 0.08em;
+}

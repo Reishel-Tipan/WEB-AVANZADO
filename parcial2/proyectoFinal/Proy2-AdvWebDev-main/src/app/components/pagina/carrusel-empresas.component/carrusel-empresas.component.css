@@ -1,0 +1,313 @@
+/* Animación principal del carrusel con nueva paleta nocturna */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Animaciones adicionales actualizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Efecto de estrellas para carrusel */
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Contenedor principal del carrusel */
+.scrolling-wrapper {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 45s linear infinite;
+  will-change: transform;
+}
+
+/* Pausa la animación al hacer hover */
+.scrolling-wrapper:hover {
+  animation-play-state: paused;
+}
+
+/* Container para cada logo con tema nocturno */
+.logo-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.05) 0%, rgba(88, 115, 179, 0.1) 50%, rgba(156, 183, 237, 0.05) 100%);
+  border: 1px solid rgba(156, 183, 237, 0.2);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(21, 26, 56, 0.3);
+}
+
+.logo-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(156, 183, 237, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.logo-container:hover::before {
+  left: 100%;
+}
+
+/* Imagen del logo con filtros actualizados */
+.logo-image {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(156, 183, 237, 0.2));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  padding: 8px;
+  background: rgba(156, 183, 237, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(156, 183, 237, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+/* Efectos hover para el logo con nueva paleta */
+.logo-container:hover .logo-image {
+  filter: drop-shadow(0 4px 16px rgba(156, 183, 237, 0.4));
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(156, 183, 237, 0.15);
+  box-shadow: 
+    0 20px 40px rgba(21, 26, 56, 0.4),
+    0 0 20px rgba(156, 183, 237, 0.3);
+  border-color: rgba(156, 183, 237, 0.5);
+}
+
+.logo-container:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.15) 0%, rgba(88, 115, 179, 0.2) 50%, rgba(156, 183, 237, 0.15) 100%);
+  border-color: rgba(156, 183, 237, 0.4);
+  box-shadow: 
+    0 20px 60px rgba(21, 26, 56, 0.4),
+    0 0 30px rgba(156, 183, 237, 0.2);
+}
+
+/* Efecto de reflejo actualizado */
+.logo-reflection {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(156, 183, 237, 0.1) 0%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.logo-container:hover .logo-reflection {
+  opacity: 1;
+}
+
+/* Estadísticas removidas - solo conservamos animaciones base */
+.stat-item {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(156, 183, 237, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(156, 183, 237, 0.2);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  background: rgba(156, 183, 237, 0.15);
+  box-shadow: 0 10px 30px rgba(21, 26, 56, 0.2);
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+.stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Efectos especiales para elementos flotantes actualizados */
+section > div:last-child > div {
+  animation: float 6s ease-in-out infinite;
+}
+
+section > div:last-child > div:nth-child(2) {
+  animation-delay: 2s;
+}
+
+section > div:last-child > div:nth-child(3) {
+  animation-delay: 4s;
+}
+
+/* Mejoras responsive actualizadas */
+@media (max-width: 768px) {
+  .logo-image {
+    width: 100px;
+    height: 60px;
+  }
+  
+  .scrolling-wrapper {
+    animation-duration: 35s;
+  }
+  
+  .logo-container {
+    padding: 0.5rem;
+  }
+  
+  .stat-item {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo-image {
+    width: 80px;
+    height: 50px;
+  }
+  
+  .scrolling-wrapper {
+    animation-duration: 30s;
+  }
+}
+
+/* Efectos de performance */
+.scrolling-wrapper,
+.logo-image,
+.logo-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Gradientes personalizados actualizados */
+.gradient-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(21, 26, 56, 0.9) 0%,
+    rgba(26, 32, 67, 0.95) 50%,
+    rgba(21, 26, 56, 0.9) 100%
+  );
+}
+
+/* Efectos de luz de fondo con nueva paleta */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(156, 183, 237, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(88, 115, 179, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Contenedor principal con z-index */
+.container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Custom night sky background para carrusel */
+.night-sky {
+  position: relative;
+  background: linear-gradient(135deg, var(--nox-deep) 0%, var(--nox-primary) 50%, var(--nox-deep) 100%);
+}
+
+.night-sky::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, rgba(156, 183, 237, 0.8), transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(156, 183, 237, 0.6), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(156, 183, 237, 0.9), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(156, 183, 237, 0.4), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(156, 183, 237, 0.7), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 8s linear infinite;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* Animación de entrada para el título */
+h2 {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Animación de entrada para el párrafo */
+p {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Efectos adicionales para mejorar la experiencia */
+.logo-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 193, 0, 0.1) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.logo-container:hover::before {
+  opacity: 1;
+}

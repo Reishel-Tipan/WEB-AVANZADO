@@ -1,0 +1,83 @@
+/* Estilos para el componente Legal */
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Estilos para los botones de navegación */
+button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+button:focus {
+  outline: 2px solid var(--nox-accent);
+  outline-offset: 2px;
+}
+
+/* Efecto hover para los botones */
+button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--nox-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Estilos para el contenido */
+.bg-nox-card-light {
+  background-color: rgba(30, 33, 58, 0.8);
+}
+
+/* Estilos para los títulos */
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.2;
+}
+
+/* Estilos para las listas */
+ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--nox-accent);
+}
+
+/* Estilos responsivos */
+@media (max-width: 640px) {
+  .flex-wrap {
+    justify-content: center;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .p-8 {
+    padding: 1.5rem;
+  }
+}

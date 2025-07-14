@@ -1,0 +1,604 @@
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Contenedor principal del carrusel */
+.carousel-outer {
+  width: 100%;
+  padding: 2rem 0;
+  margin: 2rem 0;
+}
+
+/* Contenedor del carrusel */
+.carousel-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.team-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+/* Botones de navegación */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(156, 183, 237, 0.2);
+  border: 1px solid rgba(156, 183, 237, 0.4);
+  color: #9cb7ed;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.carousel-button:hover {
+  background: #9cb7ed;
+  color: #1a2043;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button.prev {
+  left: -10px;
+}
+
+.carousel-button.next {
+  right: -10px;
+}
+
+/* Indicadores de navegación */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.carousel-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(156, 183, 237, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+  background: #9cb7ed;
+  transform: scale(1.2);
+}
+
+.carousel-indicators button:hover:not(.active) {
+  background: rgba(156, 183, 237, 0.6);
+}
+
+/* Tarjeta de miembro */
+.team-card {
+  width: 100%;
+  max-width: 800px;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  position: absolute;
+  opacity: 0;
+  transform: translateX(100%) scale(0.9);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.team-card.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.card-inner {
+  background: rgba(26, 32, 67, 0.95);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(156, 183, 237, 0.3);
+  transition: all 0.3s ease;
+}
+
+.team-card.active .card-inner {
+  box-shadow: 0 20px 60px rgba(156, 183, 237, 0.3);
+  border-color: rgba(156, 183, 237, 0.5);
+}
+
+.card-left {
+  flex: 0 0 40%;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.card-right {
+  flex: 0 0 60%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(156, 183, 237, 0.3);
+}
+
+/* Contenedor de la foto */
+.photo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Foto del equipo */
+.team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 50%;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.team-card:hover .photo-overlay {
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+/* Contenido de la tarjeta */
+.team-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  height: 100%;
+  padding: 2rem 0;
+}
+
+.content-top {
+  margin-bottom: 2rem;
+}
+
+.content-bottom {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(156, 183, 237, 0.2);
+}
+
+.team-content h3 {
+  color: #fff;
+  font-size: 2rem; /* Aumentado de 1.5rem */
+  margin: 1.5rem 0 0.8rem; /* Aumentado el margen vertical */
+  font-weight: 700;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.1em; /* Aumentado el espaciado entre letras de 0.03em a 0.1em */
+  line-height: 1.4; /* Mejor interlineado */
+  text-transform: uppercase; /* Convertir a mayúsculas para mejor legibilidad */
+  font-family: 'Bebas Neue', sans-serif; /* Usar una fuente más legible */
+}
+
+.role {
+  color: #9cb7ed;
+  font-size: 1.1rem; /* Aumentado el tamaño de fuente */
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem; /* Ajuste de márgenes */
+  display: block;
+  letter-spacing: 0.08em; /* Añadido espaciado entre letras */
+  text-transform: uppercase; /* Convertir a mayúsculas */
+  font-family: 'Bebas Neue', sans-serif; /* Usar la misma fuente que los títulos */
+}
+
+.description {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  min-height: 80px;
+}
+
+/* Contenedor de habilidades */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Etiquetas de habilidades */
+.skill-tag {
+  background: rgba(156, 183, 237, 0.1);
+  color: #9cb7ed;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(156, 183, 237, 0.2);
+}
+
+.skill-tag:hover {
+  background: rgba(156, 183, 237, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(156, 183, 237, 0.1);
+}
+
+/* Habilidades blandas */
+.soft-skills {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(156, 183, 237, 0.1);
+}
+
+.soft-skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  cursor: help;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.soft-skill-item:hover {
+  background: rgba(156, 183, 237, 0.1);
+  transform: translateY(-3px);
+}
+
+.soft-skill-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: rgba(26, 32, 67, 0.95);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(156, 183, 237, 0.2);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.soft-skill-item:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-15px);
+}
+
+.skill-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #9cb7ed;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(156, 183, 237, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.soft-skill-item:hover .skill-icon {
+  background: transparent;
+  transform: scale(1.1);
+  color: #fff;
+  border-color: #9cb7ed;
+  box-shadow: 0 0 15px rgba(156, 183, 237, 0.3);
+}
+
+.skill-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #b8c7f4;
+  transition: all 0.3s ease;
+}
+
+.soft-skill-item:hover .skill-name {
+  color: #fff;
+}
+
+/* Enlaces sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(156, 183, 237, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9cb7ed;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(156, 183, 237, 0.2);
+}
+
+.social-link:hover {
+  background: #9cb7ed;
+  color: #1a2043;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(156, 183, 237, 0.3);
+}
+
+/* Efecto de fondo de la tarjeta */
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 0;
+  border-radius: 15px 15px 0 0;
+  transition: all 0.4s ease;
+}
+
+.team-card:hover::before {
+  height: 120px;
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Miniaturas de navegación */
+.thumbnails-container {
+  width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.thumbnails-track {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  min-width: min-content;
+}
+
+.thumbnail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  transform: scale(0.9);
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: rgba(156, 183, 237, 0.1);
+}
+
+.thumbnail-item:hover {
+  opacity: 0.9;
+  transform: scale(0.95);
+  background: rgba(156, 183, 237, 0.2);
+}
+
+.thumbnail-item.active {
+  opacity: 1;
+  transform: scale(1);
+  background: rgba(156, 183, 237, 0.3);
+  box-shadow: 0 5px 15px rgba(156, 183, 237, 0.2);
+}
+
+.thumbnail-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.thumbnail-item.active .thumbnail-image {
+  border-color: #9cb7ed;
+  box-shadow: 0 0 0 2px rgba(156, 183, 237, 0.5);
+}
+
+.thumbnail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-name {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  color: #9cb7ed;
+  text-align: center;
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  padding: 0.3rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.thumbnail-item.active .thumbnail-name {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-outer {
+    padding: 1rem 0;
+  }
+  
+  .carousel-container {
+    padding: 1rem 15px;
+    min-height: auto;
+  }
+  
+  .carousel-wrapper {
+    min-height: auto;
+  }
+  
+  .team-card {
+    max-width: 100%;
+    min-height: auto;
+  }
+  
+  .card-inner {
+    flex-direction: column;
+  }
+  
+  .card-left {
+    flex: 0 0 250px;
+    min-height: 250px;
+  }
+  
+  .card-right {
+    flex: 1;
+    padding: 1.5rem;
+  }
+  
+  .team-content {
+    text-align: center;
+    padding: 1.5rem 0 0;
+  }
+  
+  .carousel-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .carousel-button.prev {
+    left: 0;
+  }
+  
+  .carousel-button.next {
+    right: 0;
+  }
+  
+  .team-card {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+  }
+  
+  .carousel-indicators {
+    margin-top: 1.5rem;
+  }
+  
+  .photo-container {
+    width: 140px;
+    height: 140px;
+    margin: -70px auto 1.25rem;
+  }
+  
+  .team-content h3 {
+    font-size: 1.8rem;
+    margin: 1.2rem 0 0.6rem;
+  }
+  
+  .role {
+    font-size: 0.85rem;
+  }
+  
+  .description {
+    font-size: 0.85rem;
+    min-height: 70px;
+  }
+}

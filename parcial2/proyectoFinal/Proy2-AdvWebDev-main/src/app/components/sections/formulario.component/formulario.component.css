@@ -1,0 +1,76 @@
+/* Estilos para el select personalizado */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.5em;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Estilos para las opciones del select */
+select option {
+  background-color: #1a1a2e;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos para el hover de las opciones */
+select option:hover {
+  background-color: #16213e;
+}
+
+/* Estilos para el foco del select */
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+}
+
+/* Estilos para el borde rojo cuando hay error */
+.border-red-500 {
+  border-color: #ef4444 !important;
+}
+
+/* Asegurar que el texto sea visible en el select */
+select {
+  color: #ffffff !important;
+}
+
+/* Estilos para el placeholder del select */
+select option[value=""] {
+  color: #9ca3af;
+}
+
+/* Estilos para el hover del select */
+select:hover {
+  border-color: #6366f1;
+}
+
+/* Asegurar que el fondo del select sea oscuro */
+select {
+  background-color: rgba(26, 26, 46, 0.5) !important;
+}
+
+/* Estilos para el scroll del select en navegadores WebKit */
+select::-webkit-scrollbar {
+  width: 8px;
+}
+
+select::-webkit-scrollbar-track {
+  background: #1a1a2e;
+  border-radius: 4px;
+}
+
+select::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 4px;
+}
+
+select::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}

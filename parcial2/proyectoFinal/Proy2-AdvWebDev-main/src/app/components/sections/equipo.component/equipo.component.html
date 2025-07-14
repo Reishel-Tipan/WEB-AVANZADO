@@ -1,0 +1,142 @@
+<section class="relative py-20 overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10">
+    
+    <!-- Header Section -->
+    <div class="text-center mb-20">
+      <span class="w-40 h-2 bg-nox-bright mb-8 mx-auto block rounded-full shadow-lg shadow-nox-bright/40"></span>
+      <h1 class="font-bebas-neue uppercase text-4xl sm:text-6xl font-black text-nox-title mb-6 tracking-wider">
+        Nuestro Equipo
+      </h1>
+      <p class="text-lg text-white max-w-3xl mx-auto leading-relaxed">
+        Conoce a los desarrolladores apasionados que forman el corazón de NoxDev
+      </p>
+    </div>
+
+    <!-- Carrusel de Equipo -->
+    <div class="carousel-outer">
+      <div class="carousel-container">
+        <button class="carousel-button prev" (click)="prev()" aria-label="Anterior miembro">
+          <span>&#10094;</span>
+        </button>
+        
+        <div class="carousel-wrapper">
+          <div class="team-carousel">
+            <!-- Mostrar solo la tarjeta activa -->
+            <div class="team-card" [class.active]="true">
+              <div class="card-inner">
+                <div class="card-left">
+                  <div class="photo-container">
+                    <img [src]="equipo[currentIndex].foto" 
+                        [alt]="equipo[currentIndex].nombre" 
+                        class="team-photo">
+                    <div class="photo-overlay"></div>
+                  </div>
+                </div>
+                
+                <div class="card-right">
+                  <div class="team-content">
+                    <div class="content-top">
+                      <h3>{{ equipo[currentIndex].nombre }}</h3>
+                      <p class="role">{{ equipo[currentIndex].rol }}</p>
+                      
+                      <p class="description">
+                        {{ equipo[currentIndex].descripcion }}
+                      </p>
+                    </div>
+                    
+                    <div class="content-bottom">
+                      <!-- Skills -->
+                      <div class="skills-container">
+                        <span *ngFor="let habilidad of equipo[currentIndex].habilidades" 
+                              class="skill-tag">
+                          {{ habilidad }}
+                        </span>
+                      </div>
+                      
+                      <!-- Habilidades blandas -->
+                      <div class="soft-skills">
+                        <div *ngFor="let skill of equipo[currentIndex].habilidadesBlandas" 
+                             class="soft-skill-item"
+                             [attr.data-tooltip]="skill.descripcion">
+                          <div class="skill-icon">
+                            <i [class]="skill.icono" aria-hidden="true"></i>
+                          </div>
+                          <span class="skill-name">{{ skill.nombre }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="carousel-button next" (click)="next()" aria-label="Siguiente miembro">
+          <span>&#10095;</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Navegación con miniaturas -->
+    <div class="thumbnails-container">
+      <div class="thumbnails-track">
+        <div *ngFor="let miembro of equipo; let i = index" 
+             class="thumbnail-item"
+             [class.active]="i === currentIndex"
+             (click)="goTo(i)"
+             [attr.aria-label]="'Ver a ' + miembro.nombre">
+          <div class="thumbnail-image">
+            <img [src]="miembro.foto" [alt]="miembro.nombre">
+          </div>
+          <span class="thumbnail-name">{{ miembro.nombre.split(' ')[0] }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Stats -->
+    <div class="bg-nox-card-bright rounded-xl p-8 border border-nox-bright/30 backdrop-blur-sm mb-20">
+      <h3 class="text-2xl font-bold text-nox-title text-center mb-8">Estadísticas del Equipo</h3>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl font-bold text-nox-title mb-2">8+</div>
+          <div class="text-white/80 text-sm">Años de Experiencia Promedio</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-nox-title mb-2">100+</div>
+          <div class="text-white/80 text-sm">Proyectos Completados</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-nox-title mb-2">15+</div>
+          <div class="text-white/80 text-sm">Tecnologías Dominadas</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-nox-title mb-2">24/7</div>
+          <div class="text-white/80 text-sm">Soporte y Dedicación</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center">
+      <div class="bg-nox-card-light rounded-xl p-8 backdrop-blur-sm border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+        <h3 class="text-2xl font-bold text-nox-title mb-4">¿Quieres trabajar con nosotros?</h3>
+        <p class="text-white mb-6 max-w-xl mx-auto">
+          Nuestro equipo está listo para convertir tu visión en realidad digital. 
+          Contacta con nosotros y comencemos a crear algo extraordinario juntos.
+        </p>
+        <a href="/formulario" class="cosmic-button px-8 py-3 rounded-lg font-bold transition-all duration-300 hover:transform hover:scale-105">
+          Contactar al Equipo
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Elementos decorativos sutiles -->
+  <div class="absolute top-1/4 left-20 w-2 h-2 bg-nox-bright rounded-full opacity-60 animate-pulse"></div>
+  <div class="absolute top-2/3 right-32 w-1 h-1 bg-nox-light rounded-full opacity-40 animate-pulse" style="animation-delay: 2s;"></div>
+  <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-nox-bright rounded-full opacity-50 animate-pulse" style="animation-delay: 4s;"></div>
+  
+</section>

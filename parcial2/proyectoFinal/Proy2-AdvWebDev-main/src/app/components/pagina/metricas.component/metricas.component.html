@@ -1,0 +1,167 @@
+<section class="relative py-20 overflow-hidden">
+  <div class="container mx-auto px-6 space-y-20 relative z-10">
+
+    <!-- HEADER SECTION -->
+    <div class="text-center mb-16">
+      <span class="w-40 h-2 bg-nox-bright mb-8 mx-auto block rounded-full shadow-lg shadow-nox-bright/40"></span>
+      <h1 class="font-bebas-neue uppercase text-5xl sm:text-7xl font-black text-nox-title mb-6 tracking-[0.12em]">
+        NoxDev en Cifras
+      </h1>
+      <p class="text-white text-lg max-w-3xl mx-auto leading-relaxed font-inter-regular">
+        Números que hablan por sí solos sobre nuestro compromiso con la excelencia en la oscuridad digital
+      </p>
+    </div>
+
+    <!-- MÉTRICAS MEJORADAS -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+      <div class="metric-card group">
+        <div class="metric-number">50+</div>
+        <div class="metric-label">Clientes</div>
+        <div class="metric-icon text-nox-accent">
+          <fa-icon [icon]="faUsers"></fa-icon>
+        </div>
+      </div>
+      <div class="metric-card group">
+        <div class="metric-number">96%</div>
+        <div class="metric-label">Tasa de Satisfacción</div>
+        <div class="metric-icon text-nox-accent">
+          <fa-icon [icon]="faStar"></fa-icon>
+        </div>
+      </div>
+      <div class="metric-card group">
+        <div class="metric-number">100+</div>
+        <div class="metric-label">Proyectos</div>
+        <div class="metric-icon text-nox-accent">
+          <fa-icon [icon]="faRocket"></fa-icon>
+        </div>
+      </div>
+      <div class="metric-card group">
+        <div class="metric-number">7</div>
+        <div class="metric-label">Países</div>
+        <div class="metric-icon text-nox-accent">
+          <fa-icon [icon]="faGlobe"></fa-icon>
+        </div>
+      </div>
+      <div class="metric-card group">
+        <div class="metric-number">30+</div>
+        <div class="metric-label">Equipo</div>
+        <div class="metric-icon text-nox-accent">
+          <fa-icon [icon]="faUserTie"></fa-icon>
+        </div>
+      </div>
+      <div class="metric-card group">
+        <div class="metric-number">8+</div>
+        <div class="metric-label">Años en el Mercado</div>
+        <div class="metric-icon text-nox-accent">
+          <fa-icon [icon]="faCalendarAlt"></fa-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICIOS PREVIEW -->
+    <div class="bg-nox-medium/50 rounded-lg p-8 border border-nox-light/20 hover:border-nox-bright/50 transition-all duration-300 backdrop-blur-sm">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl sm:text-4xl font-bold text-nox-title uppercase mb-4 tracking-wider">Nuestros Servicios</h2>
+        <p class="text-lg text-white max-w-3xl mx-auto font-inter-regular">
+          Soluciones tecnológicas que brillan en la oscuridad digital para transformar tu negocio
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="text-center p-4 bg-nox-card-light rounded-lg border border-nox-light/20 hover:border-nox-bright/50 transition-all duration-300 backdrop-blur-sm">
+          <div class="text-3xl mb-3 text-nox-accent flex justify-center">
+            <fa-icon [icon]="faLaptopCode"></fa-icon>
+          </div>
+          <h3 class="text-lg font-semibold text-nox-title mb-2">Desarrollo Web</h3>
+          <p class="text-white/80 text-sm font-inter-regular">Aplicaciones web modernas y responsivas</p>
+        </div>
+        
+        <div class="text-center p-4 bg-nox-card-light rounded-lg border border-nox-light/20 hover:border-nox-bright/50 transition-all duration-300 backdrop-blur-sm">
+          <div class="text-3xl mb-3 text-nox-accent flex justify-center">
+            <fa-icon [icon]="faMobileAlt"></fa-icon>
+          </div>
+          <h3 class="text-lg font-semibold text-nox-title mb-2">Apps Móviles</h3>
+          <p class="text-white/80 text-sm font-inter-regular">Aplicaciones nativas e híbridas</p>
+        </div>
+        
+        <div class="text-center p-4 bg-nox-card-light rounded-lg border border-nox-light/20 hover:border-nox-bright/50 transition-all duration-300 backdrop-blur-sm">
+          <div class="text-3xl mb-3 text-nox-accent flex justify-center">
+            <fa-icon [icon]="faShoppingCart"></fa-icon>
+          </div>
+          <h3 class="text-lg font-semibold text-nox-title mb-2">E-commerce</h3>
+          <p class="text-white/80 text-sm font-inter-regular">Tiendas online que impulsan ventas</p>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <a routerLink="/servicios" class="cream-slide-button">
+          <span class="button-text">Ver Todos los Servicios</span>
+          <fa-icon [icon]="faArrowRight" class="ml-2"></fa-icon>
+        </a>
+      </div>
+    </div>
+
+    <!-- QUIÉNES SOMOS SECTION -->
+    <section class="about-section">
+      <div class="section-container">
+        <div class="about-content">
+          <h2>¿Quiénes somos?</h2>
+          <p>
+            Somos un equipo de desarrollo que nace en el año 2015, en Quito, Ecuador.
+            Desarrollamos en la oscuridad digital, creando soluciones web especializadas y atendemos clientes remotamente en cualquier parte del mundo.
+          </p>
+          <p>
+            Nuestra pasión por la tecnología nocturna nos ha llevado a convertirnos en expertos en crear experiencias digitales que brillan con luz propia en el vasto universo del desarrollo web.
+          </p>
+          <div class="mt-6">
+            <a routerLink="/empresa" class="cream-slide-button">
+              <span class="button-text">Conócenos Más</span>
+              <fa-icon [icon]="faArrowRight" class="ml-2"></fa-icon>
+            </a>
+          </div>
+        </div>
+        
+        <div class="about-video-container">
+          <video autoplay loop muted playsinline>
+            <source src="assets/videos/quienes-somos-bg.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUESTRO EQUIPO SECTION -->
+    <section class="team-section">
+      <div class="section-container">
+        <div class="team-content">
+          <h2>Nuestro Equipo</h2>
+          <p>
+            Contamos con un grupo diverso de profesionales apasionados por la tecnología nocturna y la innovación, listos para brillar con tus ideas en el código.
+          </p>
+          <p>
+            Cada miembro de nuestro equipo aporta experiencia única y creatividad, trabajando en sinergia para transformar conceptos complejos en soluciones digitales elegantes y funcionales.
+          </p>
+          <div class="mt-6">
+            <a routerLink="/equipo" class="cream-slide-button">
+              <span class="button-text">Conoce al Equipo</span>
+              <fa-icon [icon]="faArrowRight" class="ml-2"></fa-icon>
+            </a>
+          </div>
+        </div>
+        
+        <div class="team-video-container">
+          <video autoplay loop muted playsinline>
+            <source src="assets/videos/equipo-bg.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Cosmic Background Elements -->
+  <div class="absolute top-1/4 left-20 w-2 h-2 bg-nox-bright rounded-full opacity-80 animate-ping"></div>
+  <div class="absolute top-1/2 right-32 w-1 h-1 bg-nox-light rounded-full opacity-60 animate-pulse" style="animation-delay: 1s;"></div>
+  <div class="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-nox-bright rounded-full opacity-70 animate-ping" style="animation-delay: 2s;"></div>
+  <div class="absolute top-2/3 right-1/4 w-1 h-1 bg-nox-light rounded-full opacity-50 animate-pulse" style="animation-delay: 3s;"></div>
+</section>

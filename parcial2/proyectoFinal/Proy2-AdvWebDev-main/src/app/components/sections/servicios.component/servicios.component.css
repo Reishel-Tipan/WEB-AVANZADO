@@ -1,0 +1,691 @@
+/* Animaciones personalizadas con tema nocturno */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Cosmic Void Background para servicios */
+.cosmic-void {
+  position: relative;
+  background: linear-gradient(135deg, var(--nox-dark) 0%, var(--nox-primary) 40%, var(--nox-medium) 100%);
+  overflow: hidden;
+}
+
+.cosmic-void::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 60px 80px, rgba(156, 183, 237, 0.8), transparent),
+    radial-gradient(1px 1px at 120px 40px, rgba(156, 183, 237, 0.6), transparent),
+    radial-gradient(1px 1px at 180px 120px, rgba(156, 183, 237, 0.4), transparent),
+    radial-gradient(2px 2px at 240px 60px, rgba(156, 183, 237, 0.9), transparent),
+    radial-gradient(1px 1px at 300px 100px, rgba(156, 183, 237, 0.5), transparent);
+  background-repeat: repeat;
+  background-size: 400px 200px;
+  animation: cosmicDrift 15s linear infinite;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+@keyframes cosmicDrift {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  33% { transform: translateX(-30px) translateY(-15px) rotate(1deg); }
+  66% { transform: translateX(-60px) translateY(-30px) rotate(-1deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+/* Stellar Glow Text Effect */
+.stellar-glow {
+  text-shadow: 
+    0 0 10px rgba(156, 183, 237, 0.5),
+    0 0 20px rgba(156, 183, 237, 0.3),
+    0 0 30px rgba(156, 183, 237, 0.2);
+  animation: stellarPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes stellarPulse {
+  0% { 
+    text-shadow: 
+      0 0 10px rgba(156, 183, 237, 0.5),
+      0 0 20px rgba(156, 183, 237, 0.3),
+      0 0 30px rgba(156, 183, 237, 0.2);
+  }
+  100% { 
+    text-shadow: 
+      0 0 15px rgba(156, 183, 237, 0.8),
+      0 0 25px rgba(156, 183, 237, 0.5),
+      0 0 35px rgba(156, 183, 237, 0.3);
+  }
+}
+
+/* Clases de animación */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Estilos para las cards de servicios con tema nocturno */
+.service-card {
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.05) 0%, rgba(88, 115, 179, 0.1) 50%, rgba(156, 183, 237, 0.05) 100%);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(156, 183, 237, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(21, 26, 56, 0.3),
+    inset 0 1px 0 rgba(156, 183, 237, 0.1);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: #000000 !important; /* Texto negro por defecto con !important */
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(156, 183, 237, 0.15), transparent);
+  transition: left 0.6s ease;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.12) 0%, rgba(88, 115, 179, 0.18) 50%, rgba(156, 183, 237, 0.12) 100%);
+  border-color: rgba(156, 183, 237, 0.6);
+  box-shadow: 
+    0 25px 70px rgba(21, 26, 56, 0.4),
+    0 0 40px rgba(156, 183, 237, 0.3),
+    inset 0 1px 0 rgba(156, 183, 237, 0.2);
+  color: #ffffff !important; /* Texto blanco en hover con !important */
+}
+
+/* Asegurar que todos los elementos de texto cambien de color con !important */
+.service-card h3,
+.service-card p,
+.service-card span,
+.service-card div {
+  transition: color 0.4s ease;
+  color: #000000 !important; /* Negro por defecto */
+}
+
+.service-card:hover h3,
+.service-card:hover p,
+.service-card:hover span,
+.service-card:hover div {
+  color: #ffffff !important; /* Blanco en hover */
+}
+
+.service-card.selected {
+  border-color: var(--nox-bright);
+  background: linear-gradient(135deg, rgba(156, 183, 237, 0.15) 0%, rgba(88, 115, 179, 0.2) 50%, rgba(156, 183, 237, 0.15) 100%);
+  box-shadow: 
+    0 20px 60px rgba(21, 26, 56, 0.5),
+    0 0 50px rgba(156, 183, 237, 0.4);
+  color: #ffffff !important; /* Texto blanco cuando está seleccionada */
+}
+
+.service-card.selected h3,
+.service-card.selected p,
+.service-card.selected span,
+.service-card.selected div {
+  color: #ffffff !important;
+}
+
+.service-card.selected::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 48%, rgba(156, 183, 237, 0.1) 50%, transparent 52%);
+  pointer-events: none;
+}
+
+/* Efectos hover para botones con tema nocturno */
+.service-card button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Botón cósmico outline */
+.cosmic-button-outline {
+  background: transparent;
+  color: var(--nox-accent);
+  border: 2px solid var(--nox-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cosmic-button-outline:hover {
+  background: var(--nox-accent);
+  color: var(--nox-dark);
+  border-color: var(--nox-bright);
+  box-shadow: 0 8px 25px rgba(156, 183, 237, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Botón cósmico principal */
+.cosmic-button {
+  background: linear-gradient(135deg, var(--nox-accent) 0%, var(--nox-bright) 100%);
+  color: var(--nox-dark);
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 25px rgba(156, 183, 237, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.cosmic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.cosmic-button:hover::before {
+  left: 100%;
+}
+
+.cosmic-button:hover {
+  box-shadow: 
+    0 12px 35px rgba(156, 183, 237, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Elementos cósmicos de fondo */
+.cosmic-bg-element {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #9cb7ed;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: cosmicPing 2s infinite ease-in-out;
+  z-index: 1;
+}
+
+@keyframes cosmicPing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.4;
+  }
+}
+
+/* Estilos para el modal de detalles */
+.service-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+  margin: 0;
+  border: none;
+}
+
+/* Contenedor del modal */
+.service-details {
+  background: linear-gradient(135deg, #151a38 0%, #1a2043 100%);
+  border: 2px solid #9cb7ed99;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+  animation: cosmicReveal 0.6s ease-out;
+  position: relative;
+}
+
+/* Contenido del modal */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Estilos para las columnas */
+.modal-left,
+.modal-right {
+  width: 100%;
+}
+
+/* Estilos para el encabezado del modal */
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.modal-icon {
+  font-size: 2.5rem;
+  color: #9cb7ed;
+  margin-right: 15px;
+}
+
+.modal-header h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 0 0 5px 0;
+}
+
+.modal-header p {
+  color: #e0e0e0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Secciones del modal */
+.modal-section {
+  margin-bottom: 25px;
+}
+
+.modal-section h3 {
+  color: #9cb7ed;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Lista de características */
+.modal-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-section li {
+  color: #fff;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-section li fa-icon {
+  color: #9cb7ed;
+}
+
+/* Tags de tecnologías */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tags span {
+  background-color: #2a3258;
+  color: #e0e0e0;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+/* Información del proyecto */
+.project-info {
+  background-color: rgba(42, 50, 88, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.project-info h3 {
+  color: #9cb7ed;
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Grid de información */
+.info-grid {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3a4372;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item span:first-child {
+  color: #b8c2e0;
+}
+
+.info-item .highlight {
+  color: #9cb7ed;
+  font-weight: bold;
+}
+
+/* Botones */
+.cta-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #9cb7ed 0%, #7a9ae0 100%);
+  color: #151a38;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(156, 183, 237, 0.3);
+}
+
+/* Pie del modal */
+.modal-footer {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #3a4372;
+}
+
+.close-button {
+  background: transparent;
+  border: 1px solid #9cb7ed66;
+  color: #e0e0e0;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  border-color: #9cb7ed;
+  color: #fff;
+  background-color: rgba(156, 183, 237, 0.1);
+}
+
+/* Estilos responsivos */
+@media (min-width: 768px) {
+  .modal-content {
+    flex-direction: row;
+  }
+  
+  .modal-left {
+    width: 55%;
+    padding-right: 20px;
+  }
+  
+  .modal-right {
+    width: 45%;
+    padding-left: 20px;
+    border-left: 1px solid #3a4372;
+  }
+}
+
+@keyframes cosmicReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.service-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 49%, rgba(156, 183, 237, 0.05) 50%, transparent 51%);
+  pointer-events: none;
+}
+
+/* Efectos de hover para tecnologías */
+.service-details span {
+  transition: all 0.3s ease;
+}
+
+.service-details span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(156, 183, 237, 0.3);
+}
+
+/* Animación para características */
+.service-details ul li {
+  animation: slideIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.service-details ul li:nth-child(1) { animation-delay: 0.1s; }
+.service-details ul li:nth-child(2) { animation-delay: 0.2s; }
+.service-details ul li:nth-child(3) { animation-delay: 0.3s; }
+.service-details ul li:nth-child(4) { animation-delay: 0.4s; }
+.service-details ul li:nth-child(5) { animation-delay: 0.5s; }
+
+/* Estilos específicos para iconos FontAwesome con tema nocturno */
+fa-icon {
+  transition: all 0.3s ease;
+}
+
+.service-card fa-icon {
+  filter: drop-shadow(0 2px 4px rgba(156, 183, 237, 0.3));
+}
+
+.service-card:hover fa-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(156, 183, 237, 0.5));
+}
+
+.service-details fa-icon {
+  filter: drop-shadow(0 1px 2px rgba(156, 183, 237, 0.2));
+}
+
+.service-details h3 fa-icon {
+  animation: pulse 2s infinite;
+}
+
+/* Animación sutil para iconos en características */
+.service-details ul li fa-icon {
+  animation: slideIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.service-details ul li:nth-child(1) fa-icon { animation-delay: 0.1s; }
+.service-details ul li:nth-child(2) fa-icon { animation-delay: 0.2s; }
+.service-details ul li:nth-child(3) fa-icon { animation-delay: 0.3s; }
+.service-details ul li:nth-child(4) fa-icon { animation-delay: 0.4s; }
+.service-details ul li:nth-child(5) fa-icon { animation-delay: 0.5s; }
+
+/* Responsive mejoras */
+@media (max-width: 768px) {
+  .service-card {
+    margin-bottom: 1rem;
+  }
+  
+  .service-details {
+    margin-top: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .service-details .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Efectos adicionales */
+.container {
+  position: relative;
+}
+
+/* Partículas de fondo (efecto sutil) */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 193, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 193, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 193, 0, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scroll suave para detalles */
+.service-details {
+  scroll-margin-top: 2rem;
+}
+
+/* Mejoras de accesibilidad */
+.service-card:focus,
+.service-details button:focus {
+  outline: 2px solid var(--nox-accent);
+  outline-offset: 2px;
+}
+
+/* Transiciones suaves para todos los elementos interactivos */
+* {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Cards de servicios con fondo personalizado */
+.service-card-custom {
+  background: rgba(215, 210, 170, 0.7) !important; 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(156, 183, 237, 0.2);
+  box-shadow: 0 8px 32px rgba(33, 49, 133, 0.3);
+  color: #000000; /* Texto negro por defecto */
+}
+
+.service-card-custom:hover {
+  background: rgba(33, 49, 133, 0.9) !important;
+  border-color: rgba(156, 183, 237, 0.6);
+  box-shadow: 0 12px 40px rgba(33, 49, 133, 0.4);
+  color: #ffffff; /* Texto blanco en hover */
+}
+
+.service-card-custom h3,
+.service-card-custom p,
+.service-card-custom span {
+  color: inherit;
+  transition: color 0.4s ease;
+}
+
+.service-card-custom:hover h3,
+.service-card-custom:hover p,
+.service-card-custom:hover span {
+  color: #ffffff;
+}
+
+/* Reglas adicionales para asegurar el color negro por defecto */
+.service-card:not(:hover):not(.selected) * {
+  color: #000000 !important;
+}
+
+.service-card:not(:hover):not(.selected) h3,
+.service-card:not(:hover):not(.selected) p,
+.service-card:not(:hover):not(.selected) span,
+.service-card:not(:hover):not(.selected) div,
+.service-card:not(:hover):not(.selected) small {
+  color: #000000 !important;
+}
+
+/* Asegurar que los iconos también cambien de color */
+.service-card:not(:hover):not(.selected) fa-icon {
+  color: #000000 !important;
+}
+
+.service-card:hover fa-icon,
+.service-card.selected fa-icon {
+  color: #ffffff !important;
+}

@@ -1,0 +1,329 @@
+<section class="relative py-20 overflow-hidden">
+  <div class="container mx-auto px-6 relative z-10">
+    
+    <!-- Header Section -->
+    <div class="text-center mb-20">
+      <span class="w-40 h-2 bg-nox-bright mb-8 mx-auto block rounded-full shadow-lg shadow-nox-bright/40"></span>
+      <h1 class="font-bebas-neue uppercase text-4xl sm:text-6xl font-black text-nox-title mb-6 tracking-[0.15em]">
+        Contáctanos
+      </h1>
+      <p class="text-lg text-white max-w-3xl mx-auto leading-relaxed">
+        Estamos listos para convertir tu visión en realidad digital. Cuéntanos sobre tu proyecto
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      
+      <!-- Formulario de contacto -->
+      <div class="bg-nox-card-light rounded-xl p-8 backdrop-blur-sm border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+        <h2 class="text-2xl font-bold text-nox-title mb-6">Envíanos un mensaje</h2>
+        
+        <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()" class="space-y-6">
+          <!-- Mensaje de éxito -->
+          @if (formSuccess()) {
+            <div class="p-4 mb-6 bg-yellow-900/20 border-l-4 border-yellow-400 text-white rounded-r-lg shadow-lg backdrop-blur-sm">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div class="ml-3">
+                  <p class="font-bold text-yellow-100">¡Mensaje enviado con éxito!</p>
+                  <p class="mt-1 text-sm text-yellow-200">Nos pondremos en contacto contigo pronto.</p>
+                </div>
+              </div>
+            </div>
+          }
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Campo Nombre -->
+            <div>
+              <label class="block text-white text-sm font-medium mb-2">Nombre *</label>
+              <input type="text" 
+                     formControlName="nombre"
+                     [ngClass]="{'border-red-500': submitted() && f['nombre'].errors}"
+                     class="w-full px-4 py-3 bg-nox-dark/50 border border-nox-light/30 rounded-lg text-white placeholder-nox-light/60 focus:border-nox-bright focus:outline-none transition-colors"
+                     placeholder="Tu nombre completo">
+              @if (submitted() && f['nombre'].errors) {
+                <div class="text-red-400 text-xs mt-1">
+                  @if (f['nombre'].errors?.['required']) {
+                    <div>El nombre es requerido</div>
+                  }
+                  @if (f['nombre'].errors?.['minlength']) {
+                    <div>El nombre debe tener al menos 3 caracteres</div>
+                  }
+                  @if (f['nombre'].errors?.['whitespace']) {
+                    <div>El nombre no puede estar vacío</div>
+                  }
+                  @if (f['nombre'].errors?.['specialChars']) {
+                    <div>No se permiten caracteres especiales</div>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Campo Email -->
+            <div>
+              <label class="block text-white text-sm font-medium mb-2">Email *</label>
+              <input type="email" 
+                     formControlName="email"
+                     [ngClass]="{'border-red-500': submitted() && f['email'].errors}"
+                     class="w-full px-4 py-3 bg-nox-dark/50 border border-nox-light/30 rounded-lg text-white placeholder-nox-light/60 focus:border-nox-bright focus:outline-none transition-colors"
+                     placeholder="tu@email.com">
+              @if (submitted() && f['email'].errors) {
+                <div class="text-red-400 text-xs mt-1">
+                  @if (f['email'].errors?.['required']) {
+                    <div>El email es requerido</div>
+                  }
+                  @if (f['email'].errors?.['email'] || f['email'].errors?.['pattern']) {
+                    <div>Por favor ingresa un email válido</div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+          
+          <!-- Campo Empresa -->
+          <div>
+            <label class="block text-white text-sm font-medium mb-2">Empresa</label>
+            <input type="text" 
+                   formControlName="empresa"
+                   [ngClass]="{'border-red-500': submitted() && f['empresa'].errors}"
+                   class="w-full px-4 py-3 bg-nox-dark/50 border border-nox-light/30 rounded-lg text-white placeholder-nox-light/60 focus:border-nox-bright focus:outline-none transition-colors"
+                   placeholder="Nombre de tu empresa">
+            @if (submitted() && f['empresa'].errors) {
+              <div class="text-red-400 text-xs mt-1">
+                @if (f['empresa'].errors?.['whitespace']) {
+                  <div>El campo no puede estar vacío</div>
+                }
+                @if (f['empresa'].errors?.['specialChars']) {
+                  <div>No se permiten caracteres especiales</div>
+                }
+              </div>
+            }
+          </div>
+          
+          <!-- Campo Servicio -->
+          <div>
+            <label class="block text-white text-sm font-medium mb-2">Servicio de interés *</label>
+            <select formControlName="servicio"
+                    [ngClass]="{'border-red-500': contactoForm.dirty && f['servicio'].errors}"
+                    class="w-full px-4 py-3 bg-nox-dark/50 border border-nox-light/30 rounded-lg text-white focus:border-nox-bright focus:outline-none transition-colors">
+              <option value="">Selecciona un servicio</option>
+              <option value="desarrollo-web-frontend">Desarrollo Web Frontend</option>
+              <option value="desarrollo-backend">Desarrollo Backend</option>
+              <option value="aplicaciones-moviles">Aplicaciones Móviles</option>
+              <option value="diseno-ux-ui">Diseño UX/UI</option>
+              <option value="sistemas-empresariales">Sistemas Empresariales</option>
+              <option value="consultoria-digital">Consultoría Digital</option>
+            </select>
+            @if (contactoForm.dirty && f['servicio'].errors) {
+              <div class="text-red-400 text-xs mt-1">
+                Por favor selecciona un servicio
+              </div>
+            }
+          </div>
+          
+          <!-- Campo Mensaje -->
+          <div>
+            <label class="block text-white text-sm font-medium mb-2">Mensaje *</label>
+            <textarea rows="5" 
+                     formControlName="mensaje"
+                     [ngClass]="{'border-red-500': submitted() && f['mensaje'].errors}"
+                     class="w-full px-4 py-3 bg-nox-dark/50 border border-nox-light/30 rounded-lg text-white placeholder-nox-light/60 focus:border-nox-bright focus:outline-none transition-colors resize-none"
+                     placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+            @if (submitted() && f['mensaje'].errors) {
+              <div class="text-red-400 text-xs mt-1">
+                @if (f['mensaje'].errors?.['required']) {
+                  <div>El mensaje es requerido</div>
+                }
+                @if (f['mensaje'].errors?.['minlength']) {
+                  <div>El mensaje debe tener al menos 10 caracteres</div>
+                }
+                @if (f['mensaje'].errors?.['whitespace']) {
+                  <div>El mensaje no puede estar vacío</div>
+                }
+                @if (f['mensaje'].errors?.['minWords']) {
+                  <div>El mensaje debe contener al menos 3 palabras</div>
+                }
+              </div>
+            }
+          </div>
+          
+          <!-- Botón de envío -->
+          <button type="submit" 
+                  class="w-full cosmic-button py-4 rounded-lg font-bold transition-all duration-300 hover:transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  [disabled]="contactoForm.invalid && submitted()">
+            @if (isSubmitting()) {
+              <span class="flex items-center justify-center">
+                <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Enviando...
+              </span>
+            } @else {
+              <span>Enviar Mensaje</span>
+            }
+          </button>
+        </form>
+      </div>
+
+      <!-- Información de contacto -->
+      <div class="space-y-8">
+        <div class="bg-nox-card-bright rounded-xl p-8 border border-nox-bright/30 backdrop-blur-sm">
+          <h3 class="text-2xl font-bold text-nox-title mb-6">Información de Contacto</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="text-nox-accent text-xl mt-1">📍</div>
+              <div>
+                <h4 class="text-white font-semibold mb-1">Ubicación</h4>
+                <p class="text-nox-light/80">Quito, Ecuador</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="text-nox-accent text-xl mt-1">📧</div>
+              <div>
+                <h4 class="text-white font-semibold mb-1">Email</h4>
+                <p class="text-nox-light/80">contacto&#64;noxdev.com</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="text-nox-accent text-xl mt-1">📱</div>
+              <div>
+                <h4 class="text-white font-semibold mb-1">Teléfono</h4>
+                <p class="text-nox-light/80">+593 99 123 4567</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="text-nox-accent text-xl mt-1">🕒</div>
+              <div>
+                <h4 class="text-white font-semibold mb-1">Horario</h4>
+                <p class="text-nox-light/80">Lun - Vie: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proceso de trabajo -->
+        <div class="bg-nox-card-light rounded-xl p-8 backdrop-blur-sm border border-nox-light/20">
+          <h3 class="text-xl font-bold text-nox-title mb-4">¿Cómo trabajamos?</h3>
+          <div class="space-y-4">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 bg-nox-bright text-nox-dark rounded-full flex items-center justify-center text-sm font-bold">1</span>
+              <span class="text-white">Análisis de requerimientos</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 bg-nox-bright text-nox-dark rounded-full flex items-center justify-center text-sm font-bold">2</span>
+              <span class="text-white">Propuesta y cotización</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 bg-nox-bright text-nox-dark rounded-full flex items-center justify-center text-sm font-bold">3</span>
+              <span class="text-white">Desarrollo y seguimiento</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 bg-nox-bright text-nox-dark rounded-full flex items-center justify-center text-sm font-bold">4</span>
+              <span class="text-white">Entrega y soporte</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- MAPA DE UBICACIÓN -->
+    <div class="mt-20">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-nox-title mb-4">Nuestra Ubicación</h3>
+        <p class="text-white max-w-2xl mx-auto">
+          Visítanos en nuestra oficina en Quito, Ecuador. Estamos ubicados en una zona de fácil acceso.
+        </p>
+      </div>
+      
+      <div class="bg-nox-card-light rounded-xl p-8 backdrop-blur-sm border border-nox-light/20 hover:border-nox-bright/40 transition-all duration-300">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Información de ubicación -->
+          <div class="space-y-6">
+            <div class="bg-nox-card-bright rounded-lg p-6 border border-nox-bright/30">
+              <h4 class="text-xl font-bold text-nox-title mb-4">Dirección Completa</h4>
+              <div class="mt-6">
+                <button type="submit" 
+                        class="w-full flex justify-center items-center px-8 py-4 bg-gradient-to-r from-nox-bright to-nox-bright/80 hover:from-nox-bright/90 hover:to-nox-bright text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+                        [disabled]="isSubmitting()">
+                  {{ isSubmitting() ? 'Enviando...' : 'Enviar mensaje' }}
+                </button>
+              </div>
+              <div class="space-y-3 text-white">
+                <p class="flex items-start space-x-3">
+                  <span class="text-nox-accent text-lg mt-1">📍</span>
+                  <span>Pasaje Pillahua No. 12 y Gonzalo Pizarro<br>Tumbaco - 17018<br>Quito, Ecuador</span>
+                </p>
+                <p class="flex items-center space-x-3">
+                  <span class="text-nox-accent text-lg">🕒</span>
+                  <span>Lunes a Viernes: 9:00 AM - 6:00 PM</span>
+                </p>
+                <p class="flex items-center space-x-3">
+                  <span class="text-nox-accent text-lg">📞</span>
+                  <span>+593 9 870 67 611</span>
+                </p>
+              </div>
+            </div>
+            
+            <div class="bg-nox-dark/30 rounded-lg p-6 border border-nox-light/20">
+              <h4 class="text-lg font-semibold text-nox-title mb-3">¿Cómo llegar?</h4>
+              <ul class="space-y-2 text-white/80 text-sm">
+                <li>• Desde el centro de Quito: 30 minutos en auto</li>
+                <li>• Transporte público: Líneas que van hacia Tumbaco</li>
+                <li>• Estacionamiento disponible</li>
+                <li>• Cerca del centro comercial San Luis Shopping</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Mapa de Google -->
+          <div class="relative">
+            <div class="bg-nox-dark/20 rounded-lg overflow-hidden border border-nox-light/30 shadow-2xl">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.817084469434!2d-78.40682018523702!3d-0.2123416997782676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a4b3b5b8b1f%3A0x8e8e8e8e8e8e8e8e!2sTumbaco%2C%20Quito%2C%20Ecuador!5e0!3m2!1ses!2sec!4v1641234567890!5m2!1ses!2sec"
+                width="100%" 
+                height="350" 
+                style="border:0; filter: grayscale(20%) contrast(1.1) brightness(0.9);" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="rounded-lg">
+              </iframe>
+            </div>
+            
+            <!-- Overlay decorativo -->
+            <div class="absolute inset-0 bg-gradient-to-br from-nox-bright/5 via-transparent to-nox-accent/5 rounded-lg pointer-events-none"></div>
+          </div>
+          
+        </div>
+        
+        <!-- Botón para abrir en Google Maps -->
+        <div class="text-center mt-8">
+          <a href="https://maps.google.com/?q=Tumbaco,Quito,Ecuador" 
+             target="_blank" 
+             class="cosmic-button-outline inline-flex items-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:transform hover:scale-105">
+            <span class="mr-2">🗺️</span>
+            Abrir en Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Elementos decorativos sutiles -->
+  <div class="absolute top-1/4 left-20 w-2 h-2 bg-nox-bright rounded-full opacity-60 animate-pulse"></div>
+  <div class="absolute top-2/3 right-32 w-1 h-1 bg-nox-light rounded-full opacity-40 animate-pulse" style="animation-delay: 2s;"></div>
+  <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-nox-bright rounded-full opacity-50 animate-pulse" style="animation-delay: 4s;"></div>
+  
+</section>

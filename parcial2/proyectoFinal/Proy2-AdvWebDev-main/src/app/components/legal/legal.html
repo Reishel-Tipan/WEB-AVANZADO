@@ -1,0 +1,80 @@
+<div class="min-h-screen bg-nox-dark text-nox-light py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4 text-nox-title">Términos Legales</h1>
+      <div class="w-24 h-1 bg-nox-accent mx-auto"></div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="flex flex-wrap justify-center mb-12 border-b border-nox-accent/20">
+      <button 
+        (click)="setActiveTab('privacidad')" 
+        [class.text-nox-bright]="activeTab === 'privacidad'"
+        [class.border-b-2]="activeTab === 'privacidad'"
+        [class.border-nox-bright]="activeTab === 'privacidad'"
+        class="px-6 py-3 font-medium text-nox-light/70 hover:text-nox-bright transition-colors duration-200">
+        Política de Privacidad
+      </button>
+      <button 
+        (click)="setActiveTab('terminos')" 
+        [class.text-nox-bright]="activeTab === 'terminos'"
+        [class.border-b-2]="activeTab === 'terminos'"
+        [class.border-nox-bright]="activeTab === 'terminos'"
+        class="px-6 py-3 font-medium text-nox-light/70 hover:text-nox-bright transition-colors duration-200">
+        Términos de Uso
+      </button>
+      <button 
+        (click)="setActiveTab('legal')" 
+        [class.text-nox-bright]="activeTab === 'legal'"
+        [class.border-b-2]="activeTab === 'legal'"
+        [class.border-nox-bright]="activeTab === 'legal'"
+        class="px-6 py-3 font-medium text-nox-light/70 hover:text-nox-bright transition-colors duration-200">
+        Información Legal
+      </button>
+    </div>
+
+    <!-- Contenido -->
+    <div class="bg-nox-card-light/30 backdrop-blur-sm rounded-lg p-8 border border-nox-light/10">
+      <!-- Política de Privacidad -->
+      <div *ngIf="activeTab === 'privacidad'" class="space-y-6">
+        <h2 class="text-2xl font-bold text-nox-title mb-6">Política de Privacidad</h2>
+        <div class="space-y-4 text-nox-light/90">
+          <p>En Nox-Dev, respetamos su privacidad y nos comprometemos a proteger su información personal. Esta política explica cómo recopilamos, usamos y protegemos su información.</p>
+          
+          <h3 class="text-xl font-semibold text-nox-title mt-6 mb-2">1. Información que Recopilamos</h3>
+          <p>Podemos recopilar información personal como nombre, dirección de correo electrónico, número de teléfono y otra información relevante cuando usted:</p>
+          <ul class="list-disc pl-6 space-y-2 mt-2">
+            <li>Se registra en nuestro sitio web</li>
+            <li>Solicita información sobre nuestros servicios</li>
+            <li>Se suscribe a nuestro boletín informativo</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Términos de Uso -->
+      <div *ngIf="activeTab === 'terminos'" class="space-y-6">
+        <h2 class="text-2xl font-bold text-nox-title mb-6">Términos de Uso</h2>
+        <div class="space-y-4 text-nox-light/90">
+          <p>Al acceder y utilizar nuestro sitio web, usted acepta cumplir con estos términos de uso.</p>
+          
+          <h3 class="text-xl font-semibold text-nox-title mt-6 mb-2">1. Uso del Sitio</h3>
+          <p>Usted acepta utilizar este sitio web únicamente para fines legales y de acuerdo con estos términos y condiciones.</p>
+        </div>
+      </div>
+
+      <!-- Información Legal -->
+      <div *ngIf="activeTab === 'legal'" class="space-y-6">
+        <h2 class="text-2xl font-bold text-nox-title mb-6">Información Legal</h2>
+        <div class="space-y-4 text-nox-light/90">
+          <h3 class="text-xl font-semibold text-nox-title">Datos de la Empresa</h3>
+          <p><strong>Nombre:</strong> Nox-Dev S.L.</p>
+          <p><strong>Dirección:</strong> Calle Ejemplo, 123, 28001 Madrid, España</p>
+          <p><strong>Teléfono:</strong> +34 123 456 789</p>
+          <p><strong>Email:</strong> info&#64;nox-dev.com</p>
+          <p><strong>CIF:</strong> B12345678</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
