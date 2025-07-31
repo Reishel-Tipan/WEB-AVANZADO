@@ -68,7 +68,7 @@ services:
   # Spring Boot API (Categories)
   categories-api:
     build:
-      context: ./backend/categories
+      context: ./backend/categoria
       dockerfile: Dockerfile
     container_name: categories-api
     depends_on:
