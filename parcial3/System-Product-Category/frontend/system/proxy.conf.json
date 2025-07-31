@@ -1,0 +1,20 @@
+{
+  "/api/products": {
+    "target": "http://localhost:8081/api",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "/api/categories": {
+    "target": "http://localhost:8082/api",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

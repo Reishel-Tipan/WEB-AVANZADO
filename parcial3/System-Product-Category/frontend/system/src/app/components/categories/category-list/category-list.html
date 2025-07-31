@@ -1,0 +1,76 @@
+<div class="container">
+  <!-- Alert Component -->
+  <app-alert 
+    *ngIf="showAlert"
+    [type]="alertType"
+    [message]="alertMessage"
+    [dismissible]="true"
+    (dismissed)="showAlert = false">
+  </app-alert>
+
+  <div class="header">
+    <h2>Lista de Categorías</h2>
+    <a routerLink="/categories/new" class="btn btn-primary">
+      <i class="fas fa-plus"></i> Nueva Categoría
+    </a>
+  </div>
+
+  <!-- Loading Spinner -->
+  <app-loading-spinner 
+    *ngIf="loading" 
+    [message]="loadingMessage"
+    [fullScreen]="categories.length === 0">
+  </app-loading-spinner>
+
+  <ng-container *ngIf="!loading">
+    <!-- Mensaje cuando no hay categorías -->
+    <div *ngIf="categories.length === 0" class="empty-table-message">
+      <i class="fas fa-tags"></i>
+      <h3>No hay categorías registradas</h3>
+      <p>Aún no se han agregado categorías al sistema.</p>
+      <a routerLink="/categories/new" class="btn">
+        <i class="fas fa-plus"></i> Agregar primera categoría
+      </a>
+    </div>
+
+    <!-- Tabla de categorías -->
+    <div *ngIf="categories.length > 0" class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha de Creación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td data-label="ID">{{ category.id || '-' }}</td>
+            <td data-label="Nombre">{{ category.name || '-' }}</td>
+            <td data-label="Descripción">{{ category.description || 'Sin descripción' }}</td>
+            <td data-label="Fecha de Creación">{{ category.createdAt | date:'medium' }}</td>
+            <td data-label="Acciones" class="actions">
+              <a [routerLink]="['/categories/edit', category.id]" class="btn-action btn-edit" title="Editar">
+                <i class="fas fa-edit"></i>
+              </a>
+              <button (click)="confirmDelete(category.id!)" class="btn-action btn-delete" title="Eliminar">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</div>
+
+  <!-- Diálogo de confirmación para eliminar -->
+  <app-confirm-dialog
+    *ngIf="showDeleteDialog"
+    title="Eliminar Categoría"
+    message="¿Está seguro que desea eliminar esta categoría? Esta acción no se puede deshacer."
+    (confirmEvent)="onDeleteConfirmed($event)"
+    [showDialog]="showDeleteDialog">
+  </app-confirm-dialog>

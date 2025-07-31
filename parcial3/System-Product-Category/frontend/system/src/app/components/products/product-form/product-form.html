@@ -1,0 +1,144 @@
+<div class="form-container">
+  <!-- Alert Component -->
+  <app-alert 
+    *ngIf="showAlert"
+    [type]="alertType"
+    [message]="alertMessage"
+    [dismissible]="true"
+    (dismissed)="showAlert = false">
+  </app-alert>
+
+  <div class="form-header">
+    <h2>
+      <i class="fas fa-box"></i>
+      {{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}
+    </h2>
+    <a [routerLink]="['/products']" class="btn btn-link">
+      <i class="fas fa-arrow-left"></i> Volver al listado
+    </a>
+  </div>
+
+  <!-- Loading Spinner -->
+  <app-loading-spinner 
+    *ngIf="loading" 
+    [message]="loadingMessage"
+    [fullScreen]="false">
+  </app-loading-spinner>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" *ngIf="!loading || (isEditMode && productForm.valid)">
+    <div class="form-group" [class.has-error]="f['name'].invalid && (f['name'].dirty || f['name'].touched)">
+      <label for="name" class="required">Nombre</label>
+      <input 
+        type="text" 
+        id="name" 
+        formControlName="name" 
+        class="form-control"
+        [class.is-invalid]="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+        [class.is-valid]="f['name'].valid && (f['name'].dirty || f['name'].touched)"
+        placeholder="Ingrese el nombre del producto"
+      >
+      <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="error-message">
+        <div *ngIf="f['name'].errors?.['required']">
+          El nombre es obligatorio
+        </div>
+        <div *ngIf="f['name'].errors?.['maxlength']">
+          El nombre no puede tener más de 100 caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" [class.has-error]="f['description'].invalid && (f['description'].dirty || f['description'].touched)">
+      <label for="description" class="required">Descripción</label>
+      <textarea 
+        id="description" 
+        formControlName="description" 
+        rows="3"
+        class="form-control"
+        [class.is-invalid]="f['description'].invalid && (f['description'].dirty || f['description'].touched)"
+        [class.is-valid]="f['description'].valid && (f['description'].dirty || f['description'].touched)"
+        placeholder="Ingrese una descripción detallada del producto"
+      ></textarea>
+      <div *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)" class="error-message">
+        <div *ngIf="f['description'].errors?.['required']">
+          La descripción es obligatoria
+        </div>
+        <div *ngIf="f['description'].errors?.['maxlength']">
+          La descripción no puede tener más de 500 caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6" [class.has-error]="f['price'].invalid && (f['price'].dirty || f['price'].touched)">
+        <label for="price" class="required">Precio</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input 
+            type="number" 
+            id="price" 
+            formControlName="price" 
+            step="0.01"
+            min="0.01"
+            class="form-control"
+            [class.is-invalid]="f['price'].invalid && (f['price'].dirty || f['price'].touched)"
+            [class.is-valid]="f['price'].valid && (f['price'].dirty || f['price'].touched)"
+            placeholder="0.00"
+          >
+        </div>
+        <div *ngIf="f['price'].invalid && (f['price'].dirty || f['price'].touched)" class="error-message">
+          <div *ngIf="f['price'].errors?.['required']">
+            El precio es obligatorio
+          </div>
+          <div *ngIf="f['price'].errors?.['min']">
+            El precio debe ser mayor a 0
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6" [class.has-error]="f['categoryId'].invalid && (f['categoryId'].dirty || f['categoryId'].touched)">
+        <label for="categoryId" class="required">Categoría</label>
+        <select 
+          id="categoryId" 
+          formControlName="categoryId"
+          class="form-control"
+          [class.is-invalid]="f['categoryId'].invalid && (f['categoryId'].dirty || f['categoryId'].touched)"
+          [class.is-valid]="f['categoryId'].valid && (f['categoryId'].dirty || f['categoryId'].touched)"
+        >
+          <option value="" disabled selected>Seleccione una categoría</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+        <div *ngIf="f['categoryId'].invalid && (f['categoryId'].dirty || f['categoryId'].touched)" class="error-message">
+          <div *ngIf="f['categoryId'].errors?.['required']">
+            La categoría es obligatoria
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button 
+        type="button" 
+        class="btn btn-secondary" 
+        [routerLink]="['/products']" 
+        [disabled]="loading"
+        [class.btn-loading]="loading"
+      >
+        <i class="fas fa-times"></i> Cancelar
+      </button>
+      
+      <button 
+        type="submit" 
+        class="btn btn-primary"
+        [disabled]="productForm.invalid || loading"
+        [class.btn-loading]="loading"
+      >
+        <i *ngIf="!loading" [class.fas]="isEditMode ? 'fa-save' : 'fa-plus'"></i>
+        {{ loading ? (isEditMode ? 'Actualizando...' : 'Creando...') : (isEditMode ? 'Actualizar' : 'Crear') }}
+      </button>
+    </div>
+  </form>
+</div>

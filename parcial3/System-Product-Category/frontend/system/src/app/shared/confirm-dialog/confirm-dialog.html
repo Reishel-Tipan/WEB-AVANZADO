@@ -1,0 +1,19 @@
+<div class="dialog-overlay" *ngIf="isVisible" (click)="onCancel()">
+  <div class="dialog" (click)="onDialogClick($event)">
+    <div class="dialog-header">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h2>{{ title }}</h2>
+    </div>
+    <div class="dialog-content">
+      <p>{{ message }}</p>
+    </div>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-cancel" (click)="onCancel()">
+        <i class="fas fa-times"></i> Cancelar
+      </button>
+      <button type="button" class="btn btn-confirm" (click)="onConfirm()">
+        <i class="fas fa-check"></i> Confirmar
+      </button>
+    </div>
+  </div>
+</div>

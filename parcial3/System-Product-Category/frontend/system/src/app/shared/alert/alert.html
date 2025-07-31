@@ -1,0 +1,19 @@
+<div class="alert-container" [ngClass]="type">
+  <div class="alert-icon">
+    <ng-container [ngSwitch]="type">
+      <span *ngSwitchCase="'success'" class="success">✓</span>
+      <span *ngSwitchCase="'error'" class="error">✕</span>
+      <span *ngSwitchCase="'warning'" class="warning">!</span>
+      <span *ngSwitchDefault class="info">i</span>
+    </ng-container>
+  </div>
+  <div class="alert-content">
+    <p class="alert-message">{{ message }}</p>
+  </div>
+  <button *ngIf="dismissible" 
+          class="alert-close" 
+          (click)="dismiss()" 
+          aria-label="Cerrar">
+    &times;
+  </button>
+</div>

@@ -1,0 +1,76 @@
+<div class="container">
+  <!-- Alert Component -->
+  <app-alert 
+    *ngIf="showAlert"
+    [type]="alertType"
+    [message]="alertMessage"
+    [dismissible]="true"
+    (dismissed)="showAlert = false">
+  </app-alert>
+
+  <div class="header">
+    <h2>Lista de Productos</h2>
+    <a routerLink="/products/new" class="btn btn-primary">
+      <i class="fas fa-plus"></i> Nuevo Producto
+    </a>
+  </div>
+
+  <!-- Loading Spinner -->
+  <app-loading-spinner 
+    *ngIf="loading" 
+    [message]="loadingMessage"
+    [fullScreen]="products.length === 0">
+  </app-loading-spinner>
+
+  <ng-container *ngIf="!loading">
+    <div *ngIf="products.length === 0" class="empty-table-message">
+      <i class="fas fa-box-open"></i>
+      <h3>No hay productos registrados</h3>
+      <p>Aún no se han agregado productos al sistema.</p>
+      <a routerLink="/products/new" class="btn">
+        <i class="fas fa-plus"></i> Agregar primer producto
+      </a>
+    </div>
+
+    <div *ngIf="products.length > 0" class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td data-label="ID">{{ product.id || '-' }}</td>
+            <td data-label="Nombre">{{ product.name || '-' }}</td>
+            <td data-label="Descripción">{{ product.description || '-' }}</td>
+            <td data-label="Precio">{{ product.price | currency }}</td>
+            <td data-label="Categoría">{{ getCategoryName(product.categoryId) || 'Sin categoría' }}</td>
+            <td data-label="Acciones" class="actions">
+              <a [routerLink]="['/products/edit', product.id]" class="btn-action btn-edit" title="Editar">
+                <i class="fas fa-edit"></i>
+              </a>
+              <button (click)="confirmDelete(product.id!)" class="btn-action btn-delete" title="Eliminar">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  
+  <!-- Diálogo de confirmación para eliminar -->
+  <app-confirm-dialog
+    *ngIf="showDeleteDialog"
+    title="Eliminar Producto"
+    message="¿Está seguro que desea eliminar este producto? Esta acción no se puede deshacer."
+    (confirmEvent)="onDeleteConfirmed($event)"
+    [showDialog]="showDeleteDialog">
+  </app-confirm-dialog>
+</div>

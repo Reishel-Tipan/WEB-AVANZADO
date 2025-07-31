@@ -1,0 +1,141 @@
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Aumentado para asegurar que esté por encima de otros elementos */
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease forwards;
+  opacity: 0;
+}
+
+.dialog {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  opacity: 1; /* Asegurar que el diálogo sea visible */
+  overflow: hidden;
+  position: relative;
+  z-index: 10000; /* Mayor z-index que el overlay */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Eliminamos la animación de slideIn que podía causar problemas */
+
+/* Efecto de cierre */
+.dialog.closing {
+  animation: fadeOut 0.2s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.dialog-header {
+  background: linear-gradient(135deg, #ff8a4a, #ff6b35);
+  color: white;
+  padding: 20px 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dialog-header i {
+  font-size: 24px;
+  color: #fff;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.dialog-content {
+  padding: 25px;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #343a40;
+  background-color: #f8f9fa;
+}
+
+.dialog-body {
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.dialog-body p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 20px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .dialog-content {
+    width: 95%;
+  }
+  
+  .dialog-actions {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  .btn:last-child {
+    margin-bottom: 0;
+  }
+}
