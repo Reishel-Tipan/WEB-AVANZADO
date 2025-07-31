@@ -8,8 +8,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin123
       MYSQL_DATABASE: productdb
-      MYSQL_USER: root
-      MYSQL_PASSWORD: admin123
       MYSQL_ROOT_HOST: '%'  # Permite conexiones root desde cualquier host
       TZ: 'America/Lima'    # Zona horaria
     ports:
