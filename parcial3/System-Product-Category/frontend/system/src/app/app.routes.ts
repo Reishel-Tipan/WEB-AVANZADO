@@ -5,12 +5,12 @@ import { CategoryList } from './components/categories/category-list/category-lis
 import { CategoryForm } from './components/categories/category-form/category-form';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '', redirectTo: '/categories', pathMatch: 'full' },
   { path: 'products', component: ProductList },
   { path: 'products/new', component: ProductForm },
   { path: 'products/edit/:id', component: ProductForm },
   { path: 'categories', component: CategoryList },
   { path: 'categories/new', component: CategoryForm },
   { path: 'categories/edit/:id', component: CategoryForm },
-  { path: '**', redirectTo: '/products' }
+  { path: '**', redirectTo: '/categories' }
 ];

@@ -1,110 +1,125 @@
-# 🚀 Sistema de Gestión de Productos y Categorías
+# Sistema de Gestión de Productos y Categorías
 
-Sistema completo para la gestión de productos y categorías, desarrollado con Angular 19 para el frontend, Spring Boot para los microservicios backend y MySQL como base de datos. Todo el sistema está contenerizado con Docker para facilitar su despliegue.
+Este es un sistema completo para la gestión de productos y categorías, desarrollado con Angular 19 para el frontend, Spring Boot para el backend y MySQL como base de datos. Todo el sistema puede ser desplegado fácilmente usando Docker Compose.
 
-## 🚀 Inicio Rápido
+## Características
 
-**¡Solo necesitas un comando para tener todo funcionando!**
+- **Frontend**: Aplicación Angular 19 con diseño responsivo
+- **Backend**: 
+  - Servicio de Productos (Spring Boot)
+  - Servicio de Categorías (Spring Boot)
+- **Base de datos**: MySQL 8.0
+- **Despliegue**: Configuración completa con Docker Compose
+
+## Requisitos previos
+
+- Docker 20.10.0 o superior
+- Docker Compose 1.29.0 o superior
+- Git (opcional, para clonar el repositorio)
+
+## Instrucciones de despliegue
+
+### 1. Clonar el repositorio (si no lo has hecho ya)
 
 ```bash
-docker-compose up -d
+git clone <URL_DEL_REPOSITORIO>
+cd System-Product-Category
 ```
 
-Este comando hará todo automáticamente:
-- Descargará las imágenes necesarias
-- Creará y configurará la base de datos MySQL
-- Iniciará los microservicios de Spring Boot
-- Desplegará la aplicación Angular
+### 2. Iniciar la aplicación con Docker Compose
 
-## 🌐 Acceso a la Aplicación
+Ejecuta el siguiente comando en la raíz del proyecto:
 
-Una vez que todos los servicios estén en ejecución (puede tardar 1-2 minutos en la primera ejecución), accede a:
+```bash
+docker-compose up --build -d
+```
 
-- **Aplicación Web**: [http://localhost:4200](http://localhost:4200)
-- **API Productos**: [http://localhost:8081/api/products](http://localhost:8081/api/products)
-- **API Categorías**: [http://localhost:8082/api/categories](http://localhost:8082/api/categories)
+Este comando hará lo siguiente:
+1. Construirá las imágenes de Docker necesarias
+2. Iniciará los contenedores en segundo plano
+3. Configurará la red entre los contenedores
+4. Inicializará la base de datos MySQL
 
-## 🔑 Credenciales de la Base de Datos (MySQL)
+### 3. Verificar que los servicios estén en ejecución
 
-- **Host**: localhost
-- **Puerto**: 3307
-- **Usuario**: root
-- **Contraseña**: admin123
-- **Base de datos**: productdb
+Puedes verificar el estado de los contenedores con:
 
-## 🛠️ Características Técnicas
+```bash
+docker-compose ps
+```
 
-- **Frontend**: 
-  - Angular 19
-  - Diseño responsivo y moderno
-  - Interfaz intuitiva
+Deberías ver los siguientes servicios en estado "Up":
+- mysql-db
+- categoria-service
+- products-service
+- frontend-app
 
-- **Backend**:
-  - Spring Boot 3.x
-  - Arquitectura de microservicios
-  - API RESTful
+### 4. Acceder a la aplicación
 
-- **Base de Datos**:
-  - MySQL 8.0
-  - Configuración automática
-  - Datos persistentes
+Una vez que todos los servicios estén en ejecución, puedes acceder a la aplicación en:
 
-## 📂 Estructura del Proyecto
+- **Frontend**: http://localhost:4200
+- **API de Productos**: http://localhost:8081/api/products
+- **API de Categorías**: http://localhost:8082/api/categorias
+
+## Estructura del proyecto
 
 ```
-.
+System-Product-Category/
 ├── backend/
-│   ├── categoria/          # Microservicio de Categorías
-│   └── products/           # Microservicio de Productos
-├── frontend/              
-│   └── system/             # Aplicación Angular
-├── docker-compose.yml      # Configuración de Docker
-└── README.md              
+│   ├── categoria/         # Servicio de Categorías (Spring Boot)
+│   └── products/          # Servicio de Productos (Spring Boot)
+├── frontend/
+│   └── system/            # Aplicación Angular 19
+├── docker-compose.yml      # Configuración de Docker Compose
+└── README.md              # Este archivo
 ```
 
-## 🔄 Comandos Útiles
+## Variables de entorno
 
-| Comando | Descripción |
-|---------|-------------|
-| `docker-compose up -d` | Inicia todos los servicios |
-| `docker-compose down` | Detiene y elimina los contenedores |
-| `docker-compose logs -f` | Muestra los logs en tiempo real |
-| `docker-compose ps` | Verifica el estado de los contenedores |
-| `docker-compose up -d --build` | Reconstruye las imágenes y reinicia |
+Las siguientes variables de entorno pueden ser modificadas en el archivo `docker-compose.yml` según sea necesario:
 
-## ⚙️ Configuración Avanzada
+- **MySQL**:
+  - `MYSQL_ROOT_PASSWORD`: Contraseña del usuario root de MySQL
+  - `MYSQL_DATABASE`: Nombre de la base de datos
+  - `MYSQL_USER`: Usuario de la base de datos
+  - `MYSQL_PASSWORD`: Contraseña del usuario de la base de datos
 
-Toda la configuración está lista para funcionar sin cambios. Si necesitas personalizar algo, edita el archivo `docker-compose.yml`.
+- **Servicios Spring Boot**:
+  - `DB_HOST`: Dirección del servidor de base de datos
+  - `DB_PORT`: Puerto de la base de datos
+  - `DB_NAME`: Nombre de la base de datos
+  - `DB_USER`: Usuario de la base de datos
+  - `DB_PASSWORD`: Contraseña de la base de datos
 
-## 📝 Notas Importantes
+## Comandos útiles
 
-- La primera ejecución puede tardar varios minutos mientras se descargan las imágenes.
-- Los datos de la base de datos persisten entre reinicios gracias a volúmenes de Docker.
-- El puerto 3307 se usa para MySQL para evitar conflictos con otras instalaciones.
+### Detener los contenedores
+```bash
+docker-compose down
+```
 
-- **Backend (ambos servicios)**:
-  - `SPRING_DATASOURCE_URL`: URL de conexión a la base de datos
-  - `SPRING_DATASOURCE_USERNAME`: Usuario de la base de datos
-  - `SPRING_DATASOURCE_PASSWORD`: Contraseña de la base de datos
+### Ver logs de los contenedores
+```bash
+docker-compose logs -f
+```
+
+### Reconstruir y reiniciar un servicio específico
+```bash
+docker-compose up -d --build <nombre_del_servicio>
+```
 
 ## Solución de problemas
 
-1. **Problemas de puertos**:
-   - Asegúrate de que los puertos 4200 (frontend), 8081 (productos), 8082 (categorías) y 3307 (MySQL) no estén siendo utilizados por otras aplicaciones.
+### Si los servicios no se inician correctamente
+1. Verifica que los puertos no estén siendo utilizados por otras aplicaciones
+2. Revisa los logs del servicio con problemas: `docker-compose logs <nombre_del_servicio>`
+3. Asegúrate de que Docker tenga suficientes recursos asignados
 
-2. **Problemas de conexión entre servicios**:
-   - Verifica que todos los contenedores estén en la misma red de Docker (`docker network ls`).
-   - Revisa los logs de los contenedores para identificar errores específicos.
-
-3. **Problemas de permisos**:
-   - En algunos sistemas, puede ser necesario ejecutar Docker con privilegios de administrador.
-
-4. **Reiniciar desde cero**:
-   ```bash
-   docker-compose down -v  # Elimina volúmenes también
-   docker-compose up -d
-   ```
+### Si la base de datos no se inicializa correctamente
+1. Verifica que las credenciales en el archivo `docker-compose.yml` coincidan con las de los servicios
+2. Intenta eliminar los volúmenes y volver a iniciar: `docker-compose down -v` y luego `docker-compose up -d`
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más información.
+Este proyecto está bajo la Licencia MIT.

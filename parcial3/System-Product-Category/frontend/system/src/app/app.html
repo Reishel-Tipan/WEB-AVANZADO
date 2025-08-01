@@ -9,13 +9,13 @@
 
       
       <nav class="main-nav">
-        <a routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
-          <i class="nav-icon">📦</i>
-          <span>Productos</span>
-        </a>
         <a routerLink="/categories" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
           <i class="nav-icon">🏷️</i>
           <span>Categorías</span>
+        </a>
+        <a routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+          <i class="nav-icon">📦</i>
+          <span>Productos</span>
         </a>
       </nav>
       
@@ -59,8 +59,8 @@
       <div class="footer-column">
         <h4>Navegación</h4>
         <ul class="footer-links">
-          <li><a routerLink="/products">Productos</a></li>
           <li><a routerLink="/categories">Categorías</a></li>
+          <li><a routerLink="/products">Productos</a></li>
         </ul>
       </div>
 
@@ -110,12 +110,12 @@
 
 <!-- Menú móvil -->
 <div class="mobile-nav" *ngIf="isMobileView">
-  <a routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-item">
-    <i class="nav-icon">📦</i>
-    <span>Productos</span>
-  </a>
   <a routerLink="/categories" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-item">
     <i class="nav-icon">🏷️</i>
     <span>Categorías</span>
+  </a>
+    <a routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-item">
+    <i class="nav-icon">📦</i>
+    <span>Productos</span>
   </a>
 </div>
