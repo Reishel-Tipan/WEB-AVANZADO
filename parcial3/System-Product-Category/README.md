@@ -11,12 +11,6 @@ git clone https://github.com/Reishel-Tipan/WEB-AVANZADO.git
 cd WEB-AVANZADO/parcial3/System-Product-Category
 ```
 
-Si ya tienes el repositorio clonado, simplemente navega a la carpeta del proyecto:
-
-```bash
-cd ruta/a/tu/proyecto/WEB-AVANZADO/parcial3/System-Product-Category
-```
-
 ### 2. Iniciar la aplicación
 
 ```bash
