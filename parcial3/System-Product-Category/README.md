@@ -1,52 +1,68 @@
 # Sistema de Gestión de Productos y Categorías
 
-Este es un sistema completo para la gestión de productos y categorías, desarrollado con Angular 19 para el frontend, Spring Boot para el backend y MySQL como base de datos. Todo el sistema puede ser desplegado fácilmente usando Docker Compose.
+Sistema completo para la gestión de productos y categorías con Angular 19 (frontend), Spring Boot (backend) y MySQL. Despliegue simplificado con Docker Compose.
 
-## Características
+## 🚀 Instalación Rápida
 
-- **Frontend**: Aplicación Angular 19 con diseño responsivo
-- **Backend**: 
-  - Servicio de Productos (Spring Boot)
-  - Servicio de Categorías (Spring Boot)
-- **Base de datos**: MySQL 8.0
-- **Despliegue**: Configuración completa con Docker Compose
-
-## Requisitos previos
-
-- Docker 20.10.0 o superior
-- Docker Compose 1.29.0 o superior
-- Git (opcional, para clonar el repositorio)
-
-## Instrucciones de despliegue
-
-### 1. Clonar el repositorio (si no lo has hecho ya)
+### 1. Clonar el repositorio
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd System-Product-Category
+git clone https://github.com/Reishel-Tipan/WEB-AVANZADO.git
+cd WEB-AVANZADO/parcial3/System-Product-Category
 ```
 
-### 2. Iniciar la aplicación con Docker Compose
+Si ya tienes el repositorio clonado, simplemente navega a la carpeta del proyecto:
 
-Ejecuta el siguiente comando en la raíz del proyecto:
+```bash
+cd ruta/a/tu/proyecto/WEB-AVANZADO/parcial3/System-Product-Category
+```
+
+### 2. Iniciar la aplicación
 
 ```bash
 docker-compose up --build -d
 ```
 
-Este comando hará lo siguiente:
-1. Construirá las imágenes de Docker necesarias
-2. Iniciará los contenedores en segundo plano
-3. Configurará la red entre los contenedores
-4. Inicializará la base de datos MySQL
+## 🌐 Acceso a la aplicación
 
-### 3. Verificar que los servicios estén en ejecución
+- **Frontend (Angular)**: http://localhost:4200
+- **API Productos**: http://localhost:8081/api/products
+- **API Categorías**: http://localhost:8082/api/categories
+- **Base de datos MySQL**:
+  - Puerto: 3307
+  - Usuario: root
+  - Contraseña: admin123
+  - Base de datos: productdb / categorydb
 
-Puedes verificar el estado de los contenedores con:
+## 🛠️ Comandos útiles
 
-```bash
-docker-compose ps
+- **Ver logs de los contenedores**: `docker-compose logs -f`
+- **Detener la aplicación**: `docker-compose down`
+- **Reiniciar un servicio**: `docker-compose restart nombre-servicio`
+
+## 📦 Estructura del proyecto
+
 ```
+System-Product-Category/
+├── backend/             # Servicios backend (Spring Boot)
+│   ├── products/        # Servicio de productos
+│   └── categoria/       # Servicio de categorías
+├── frontend/            # Aplicación Angular
+└── docker-compose.yml   # Configuración de Docker Compose
+```
+
+## 🔍 Características
+
+- **Frontend**: Angular 19 con diseño responsivo
+- **Backend**: Microservicios Spring Boot
+- **Base de datos**: MySQL 8.0
+- **Despliegue**: Configuración optimizada con Docker Compose
+
+## 📝 Notas adicionales
+
+- La aplicación está configurada para mostrar primero la sección de Categorías
+- Los cambios en la base de datos persisten gracias a volúmenes de Docker
+- Para reiniciar completamente la base de datos, usa: `docker-compose down -v`
 
 Deberías ver los siguientes servicios en estado "Up":
 - mysql-db
@@ -62,18 +78,6 @@ Una vez que todos los servicios estén en ejecución, puedes acceder a la aplica
 - **API de Productos**: http://localhost:8081/api/products
 - **API de Categorías**: http://localhost:8082/api/categorias
 
-## Estructura del proyecto
-
-```
-System-Product-Category/
-├── backend/
-│   ├── categoria/         # Servicio de Categorías (Spring Boot)
-│   └── products/          # Servicio de Productos (Spring Boot)
-├── frontend/
-│   └── system/            # Aplicación Angular 19
-├── docker-compose.yml      # Configuración de Docker Compose
-└── README.md              # Este archivo
-```
 
 ## Variables de entorno
 
